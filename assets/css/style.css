@@ -1,0 +1,40 @@
+body, html {
+	background-color: black;
+}
+
+h1 {
+/*	font-family:;
+*/}
+
+
+#boardContainer {
+	position: fixed;
+	width: 100%;
+	margin: 4% 5% 2% 3%;
+	top: 0;
+	left: 0;
+}
+
+#usMap {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	
+	top: 0;
+
+	left: 0;
+
+}
+
+p {
+
+	font-size: 30px;
+	z-index: 10;
+}
+
+#score {
+
+	position: fixed;
+	top: 0;
+	left: 0;
+}
