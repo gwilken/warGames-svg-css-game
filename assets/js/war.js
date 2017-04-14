@@ -20,23 +20,23 @@ $(document).ready(function() {
 
 			var that = this;
 			
-			this.state = {
+			this.state = //{
 
-					get: function(state, attr) {
+					// get: function(state, attr) {
 
-						return( [this.state][attr]) ;
+					// 	return( [this.state][attr]) ;
 					
-					},
+					// },
 
-					getStateByIndex(index) {
-						return()
-					}
+					// getStateByIndex(index) {
+					// 	return()
+					// }
 
-					set: function(state, attr, value) {
+					// set: function(state, attr, value) {
 
-						this[state][attr] = value;
+					// 	this[state][attr] = value;
 					
-					},
+					// },
 
 					[{
 						name: 'Alabama',
@@ -46,6 +46,7 @@ $(document).ready(function() {
 						initialTeam: 'south',
 						effectivness: 1,
 					},
+					{
 						name: 'Arkansas',
 						mapStateListIndex: 1,
 						votes: 6,
@@ -53,7 +54,7 @@ $(document).ready(function() {
 						initialTeam: 'south',
 						effectivness: 1,
 					},
-
+					{
 						name: 'Arizona',
 						mapStateListIndex: 2,
 						votes: 11,
@@ -61,7 +62,7 @@ $(document).ready(function() {
 						initialTeam: 'west',
 						effectivness: 1,
 					},
-					california: {
+					{
 						name: 'California',
 						mapStateListIndex: 3,
 						votes: 55,
@@ -69,7 +70,7 @@ $(document).ready(function() {
 						initialTeam: 'west',
 						effectivness: 1,
 					},
-					colorado : {
+					{
 						name: 'Colorado',
 						mapStateListIndex: 4,
 						votes: 9,
@@ -77,7 +78,7 @@ $(document).ready(function() {
 						initialTeam: 'west',
 						effectivness: 1,
 					},
-					connecticut : {
+					{
 						name: 'Connecticut',
 						mapStateListIndex: 5,
 						votes: 7,
@@ -85,7 +86,7 @@ $(document).ready(function() {
 						initialTeam: 'east',
 						effectivness: 1,
 					},
-					delaware : {
+					{
 						name: 'Delaware',
 						mapStateListIndex: 6,
 						votes: 3,
@@ -93,7 +94,7 @@ $(document).ready(function() {
 						initialTeam: 'east',
 						effectivness: 1,
 					},
-					florida : {
+					{
 						name: 'Florida',
 						mapStateListIndex: 7,
 						votes: 29,
@@ -101,7 +102,7 @@ $(document).ready(function() {
 						initialTeam: 'south',
 						effectivness: 1,
 					},
-					georgia : {
+					{
 						name: 'Georgia',
 						mapStateListIndex: 8,
 						votes: 16,
@@ -109,7 +110,7 @@ $(document).ready(function() {
 						initialTeam: 'south',
 						effectivness: 1,
 					},
-					iowa : {
+					{
 						name: 'Iowa',
 						mapStateListIndex: 9,
 						votes: 6,
@@ -117,7 +118,7 @@ $(document).ready(function() {
 						initialTeam: 'midwest',
 						effectivness: 1,
 					},
-					idaho : {
+					{
 						name: 'Idaho',
 						mapStateListIndex: 10,
 						votes: 4,
@@ -125,7 +126,7 @@ $(document).ready(function() {
 						initialTeam: 'west',
 						effectivness: 1,
 					},
-					illinois : {
+					{
 						name: 'Illinoia',
 						mapStateListIndex: 11,
 						votes: 20,
@@ -133,7 +134,7 @@ $(document).ready(function() {
 						initialTeam: 'midwest',
 						effectivness: 1,
 					},
-					indiana : {
+					{
 						name: 'Indiana',
 						mapStateListIndex: 12,
 						votes: 11,
@@ -141,7 +142,7 @@ $(document).ready(function() {
 						initialTeam: 'midwest',
 						effectivness: 1,
 					},
-					kansas : {
+					{
 						name: 'Kansas',
 						mapStateListIndex: 13,
 						votes: 6,
@@ -149,7 +150,7 @@ $(document).ready(function() {
 						initialTeam: 'midwest',
 						effectivness: 1,
 					},
-					kentucky : {
+					{
 						name: 'Kentucky',
 						mapStateListIndex: 14,
 						votes: 8,
@@ -157,7 +158,7 @@ $(document).ready(function() {
 						initialTeam: 'west',
 						effectivness: 1,
 					},
-					louisiana : {
+					{
 						name: 'Louisiana',
 						mapStateListIndex: 15,
 						votes: 8,
@@ -165,7 +166,7 @@ $(document).ready(function() {
 						initialTeam: 'south',
 						effectivness: 1,
 					},
-					massachusetts : {
+					{
 						name: 'Massachusetts',
 						mapStateListIndex: 16,
 						votes: 11,
@@ -173,7 +174,7 @@ $(document).ready(function() {
 						initialTeam: 'east',
 						effectivness: 1,
 					},
-					maryland : {
+					{
 						name: 'Maryland',
 						mapStateListIndex: 17,
 						votes: 10,
@@ -181,7 +182,7 @@ $(document).ready(function() {
 						initialTeam: 'east' ,
 						effectivness: 1,
 					},
-					maine : {
+					{
 						name: 'Maine',
 						mapStateListIndex: 18,
 						votes: 4,
@@ -189,7 +190,7 @@ $(document).ready(function() {
 						initialTeam: 'east',
 						effectivness: 1,
 					},
-					michigan : {
+					{
 						name: 'Michigan',
 						mapStateListIndex: 19,
 						votes: 16,
@@ -197,7 +198,7 @@ $(document).ready(function() {
 						initialTeam: 'midwest',
 						effectivness: 1,
 					},
-					minnesota : {
+					{
 						name: 'Minnesota',
 						mapStateListIndex: 20,
 						votes: 10,
@@ -205,7 +206,7 @@ $(document).ready(function() {
 						initialTeam: 'midwest' ,
 						effectivness: 1,
 					},
-					missouri : {
+					{
 						name: 'Missouri',
 						mapStateListIndex: 21,
 						votes: 10,
@@ -213,7 +214,7 @@ $(document).ready(function() {
 						initialTeam: 'midwest',
 						effectivness: 1,
 					},
-					mississippi : {
+					{
 						name: 'Mississippi',
 						mapStateListIndex: 22,
 						votes: 6,
@@ -221,7 +222,7 @@ $(document).ready(function() {
 						initialTeam: 'south' ,
 						effectivness: 1,
 					},
-					montana : {
+					{
 						name: 'Montana',
 						mapStateListIndex: 23,
 						votes: 3,
@@ -229,7 +230,7 @@ $(document).ready(function() {
 						initialTeam: 'west',
 						effectivness: 1,
 					},
-					northCarolina : {
+					{
 						name: 'North Carolina',
 						mapStateListIndex: 24,
 						votes: 15,
@@ -237,7 +238,7 @@ $(document).ready(function() {
 						initialTeam: 'south' ,
 						effectivness: 1,
 					},
-					northDakota : {
+					{
 						name: 'North Dakota',
 						mapStateListIndex: 25,
 						votes: 3,
@@ -245,7 +246,7 @@ $(document).ready(function() {
 						initialTeam: 'midwest' ,
 						effectivness: 1,
 					},
-					nebraska : {
+					{
 						name: 'Nebraska',
 						mapStateListIndex: 26,
 						votes: 5,
@@ -253,7 +254,7 @@ $(document).ready(function() {
 						initialTeam: 'midwest',
 						effectivness: 1,
 					},
-					newHampshire : {
+					{
 						name: 'New Hampshire',
 						mapStateListIndex: 27,
 						votes: 4,
@@ -261,7 +262,7 @@ $(document).ready(function() {
 						initialTeam: 'east',
 						effectivness: 1,
 					},
-					newJersey : {
+					{
 						name: 'New Jersey',
 						mapStateListIndex: 28,
 						votes: 14,
@@ -269,7 +270,7 @@ $(document).ready(function() {
 						initialTeam: 'east' ,
 						effectivness: 1,
 					},
-					newMexico : {
+					{
 						name: 'New Mexico',
 						mapStateListIndex: 29,
 						votes: 5,
@@ -277,7 +278,7 @@ $(document).ready(function() {
 						initialTeam: 'west',
 						effectivness: 1,
 					},
-					nevada : {
+					{
 						name: 'Nevada',
 						mapStateListIndex: 30,
 						votes: 6,
@@ -285,7 +286,7 @@ $(document).ready(function() {
 						initialTeam: 'west' ,
 						effectivness: 1,
 					},
-					newYork : {
+					{
 						name: 'New York',
 						mapStateListIndex: 31,
 						votes: 29,
@@ -293,7 +294,7 @@ $(document).ready(function() {
 						initialTeam: 'east',
 						effectivness: 1,
 					},
-					ohio : {
+					{
 						name: 'Ohio',
 						mapStateListIndex: 32,
 						votes: 18,
@@ -301,7 +302,7 @@ $(document).ready(function() {
 						initialTeam: 'midwest',
 						effectivness: 1,
 					},
-					oklahoma : {
+					{
 						name: 'Oklahoma',
 						mapStateListIndex: 33,
 						votes: 7,
@@ -309,7 +310,7 @@ $(document).ready(function() {
 						initialTeam: 'midwest',
 						effectivness: 1,
 					},
-					oregon : {
+					{
 						name: 'Oregon',
 						mapStateListIndex: 34,
 						votes: 7,
@@ -317,7 +318,7 @@ $(document).ready(function() {
 						initialTeam: 'west',
 						effectivness: 1,
 					},
-					pennsylvania : {
+					{
 						name: 'Pennsylvania',
 						mapStateListIndex: 35,
 						votes: 20,
@@ -325,7 +326,7 @@ $(document).ready(function() {
 						initialTeam: 'east',
 						effectivness: 1,
 					},
-					rhodeIsland : {
+					{
 						name: 'Rhode Island',
 						mapStateListIndex: 36,
 						votes: 4,
@@ -333,7 +334,7 @@ $(document).ready(function() {
 						initialTeam: 'east',
 						effectivness: 1,
 					},
-					southCarolina : {
+					{
 						name: 'South Carolina',
 						mapStateListIndex: 37,
 						votes: 9,
@@ -341,7 +342,7 @@ $(document).ready(function() {
 						initialTeam: 'south' ,
 						effectivness: 1,
 					},
-					southDakota : {
+					{
 						name: 'South Dakota',
 						mapStateListIndex: 38,
 						votes: 3,
@@ -349,7 +350,7 @@ $(document).ready(function() {
 						initialTeam: 'midwest',
 						effectivness: 1,
 					},
-					tennessee : {
+					{
 						name: 'Tennesse',
 						mapStateListIndex: 39,
 						votes: 11,
@@ -357,7 +358,7 @@ $(document).ready(function() {
 						initialTeam: 'south' ,
 						effectivness: 1,
 					},
-					texas : {
+					{
 						name: 'Texas',
 						mapStateListIndex: 40,
 						votes: 38,
@@ -365,7 +366,7 @@ $(document).ready(function() {
 						initialTeam: 'south' ,
 						effectivness: 1,
 					},
-					utah : {
+					{
 						name: 'Utah',
 						mapStateListIndex: 41,
 						votes: 6,
@@ -373,7 +374,7 @@ $(document).ready(function() {
 						initialTeam: 'west',
 						effectivness: 1,
 					},
-					virgina : {
+					{
 						name: 'Virgina',
 						mapStateListIndex: 42,
 						votes: 13,
@@ -381,7 +382,7 @@ $(document).ready(function() {
 						initialTeam: 'south',
 						effectivness: 1,
 					},
-					vermot : {
+					{
 						name: 'Vermont',
 						mapStateListIndex: 43,
 						votes: 3,
@@ -389,7 +390,7 @@ $(document).ready(function() {
 						initialTeam: 'east',
 						effectivness: 1,
 					},
-					washington : {
+					{
 						name: 'Washington',
 						mapStateListIndex: 44,
 						votes: 12,
@@ -397,7 +398,7 @@ $(document).ready(function() {
 						initialTeam: 'west',
 						effectivness: 1,
 					},
-					wisconsin : {
+					{
 						name: 'Wisconsin',
 						mapStateListIndex: 45,
 						votes: 10,
@@ -405,7 +406,7 @@ $(document).ready(function() {
 						initialTeam: 'midwest',
 						effectivness: 1,
 					},
-					westVirgina : {
+					{
 						name: 'West Virgina',
 						mapStateListIndex: 46,
 						votes: 5,
@@ -413,7 +414,7 @@ $(document).ready(function() {
 						initialTeam: 'south',
 						effectivness: 1,
 					},
-					wyoming : {
+					{
 						name: 'Wyoming',
 						mapStateListIndex: 47,
 						votes: 3,
@@ -421,7 +422,7 @@ $(document).ready(function() {
 						initialTeam: 'west',
 						effectivness: 1,
 					},
-					dc : {
+					{
 						name: 'D.C.',
 						mapStateListIndex: 48,
 						votes: 3,
@@ -429,7 +430,7 @@ $(document).ready(function() {
 						initialTeam: 'east',
 						effectivness: 1
 					}
-				};
+				];
 			
 			this.boardMap = document.getElementById('usMap').contentDocument;
 			
@@ -442,18 +443,23 @@ $(document).ready(function() {
 
 				//this.state.set('california', 'name', 'bob');
 				
-				console.log(this.state.california.name);
+				//console.log(this.state.california.name);
 
-				console.log(this.stateList[this.state.california.mapStateListIndex]);
+				//console.log(this.stateList[this.state.california.mapStateListIndex]);
 
 				 for(var i = 0; i < 49; i++) {
 
 					var box = this.stateList[i].getBoundingClientRect();
 
-					var label = $('<p>').attr('data-label-' + i).css({'top': box.top + (box.height / 4), 'left': box.left + (box.width / 3)});
+					var label = $('<p>');
+
+					label.attr('data-label-',  i).css({'top': box.top + (box.height / 4), 'left': box.left + (box.width / 3)});
 				 
-				 	label.html();
+				 	label.html(this.state[i].name);
+
+				 	$('#boardContainer').append(label);
 				 }
+				 
 				
 				var that = this;
 
