@@ -16,6 +16,8 @@ $(document).ready(function() {
 
 	var game = function() {
 
+		var board = document.getElementById('usMap');
+
 		var boardMap = document.getElementById('usMap').contentDocument.getElementById("outlines");
 
 		var pattern = document.getElementById('usMap').contentDocument.getElementsByTagName("pattern");
@@ -502,24 +504,62 @@ $(document).ready(function() {
 		this.repositionMapOnClick = function(state) {
 
 			var stateBox = state.getBoundingClientRect();
+			var mapBox = board.getBoundingClientRect();
 
-			console.log(stateBox);
 
-			var currentMapXpos = $('#usMap').css('left');
+			//quadrant 1
 
-			console.log(currentMapXpos); 
+			if(( stateBox.x + (stateBox.width/2) < mapBox.width /2) && (stateBox.y + (stateBox.height/2) < mapBox.height /2)) {
+				
+				$('#usMap').css({'left': (((mapBox.width /2) - stateBox.x)) - (stateBox.width/2), 'top': (((mapBox.height /2) - stateBox.y)) - (stateBox.height/2)  });
 
-			$('#usMap').animate({'top': stateBox.top , 'left': stateBox.left}, 500, 'linear', that.refreshLabels);
+				console.log('q1');
 
-			console.log('repos');
+			}
 
+			//quadrant 2
+
+			if(( stateBox.x + (stateBox.width/2) > mapBox.width /2) && (stateBox.y + (stateBox.height/2) < mapBox.height /2))  {
+
+				$('#usMap').css({'left': (mapBox.x - (stateBox.x - (mapBox.width/2)) - (stateBox.width/2))  , 'top': (((mapBox.height /2) - stateBox.y)) - (stateBox.height/2)  });
+
+				console.log('q2');
+			}
+
+			//quadrant 3
+
+			if(( stateBox.x + (stateBox.width/2) > mapBox.width /2)&& (stateBox.y + (stateBox.height/2) > mapBox.height /2))  {
+				
+				$('#usMap').css({'left':  (mapBox.x - (stateBox.x - (mapBox.width/2)) - (stateBox.width/2)),  'top': (mapBox.y - (stateBox.y - mapBox.height/2) - stateBox.height/2) });
+
+				console.log('q3');
+			}
+
+			//quadrant 4
+
+			if(( stateBox.x + (stateBox.width/2) < mapBox.width /2) && (stateBox.y + (stateBox.height/2) > mapBox.height /2))  {
+				
+				$('#usMap').css({'left': (((mapBox.width /2) - stateBox.x)) - (stateBox.width/2), 'top': (mapBox.y - (stateBox.y - mapBox.height/2) - stateBox.height/2) });
+
+				console.log('q4');
+
+			}
+
+
+
+			//that.rescaleMap(2);
+
+		};
+
+		this.rescaleMap = function(factor) {
+			$('#usMap').css('transform', 'scale(' + factor + ')');
 		};
 
 		this.assignStripPattern = function(state) {
 
 			state.setAttribute('fill', 'url(#stripes)' );
 
-		}
+		};
 
 		this.changeStateColor = function(state) {
 			
