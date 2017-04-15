@@ -16,353 +16,399 @@ $(document).ready(function() {
 
 	var game = function() {
 
-		var boardMap = document.getElementById('usMap').contentDocument;
-		var stateList = boardMap.getElementsByTagName("path");
-		var state = [
+		var boardMap = document.getElementById('usMap').contentDocument.getElementById("outlines");
+
+		var pattern = document.getElementById('usMap').contentDocument.getElementsByTagName("pattern");
+
+		var statePath = boardMap.getElementsByTagName("path");
+		
+		var stateData = [
 					{
-						name: 'Alabama',
+						displayName: 'Alabama',
+						id: 'AL',
 						votes: 9,
 						neighbors: [],
 						initialTeam: 'south',
 						effectivness: 1
 					},
 					{
-						name: 'Arkansas',						
+						displayName: 'Arkansas',						
+						id: 'AR',
 						votes: 6,
 						neighbors: [],
 						initialTeam: 'south',
 						effectivness: 1
 					},
 					{
-						name: 'Arizona',						
+						displayName: 'Arizona',						
+						id: 'AZ',
 						votes: 11,
 						neighbors: [],
 						initialTeam: 'west',
 						effectivness: 1
 					},
 					{
-						name: 'California',						
+						displayName: 'California',						
+						id: 'CA',
 						votes: 55,
 						neighbors: [],
 						initialTeam: 'west',
 						effectivness: 1
 					},
 					{
-						name: 'Colorado',						
+						displayName: 'Colorado',
+						id: 'CO',						
 						votes: 9,
 						neighbors: [],
 						initialTeam: 'west',
 						effectivness: 1
 					},
 					{
-						name: 'Connecticut',					
+						displayName: 'Connecticut',	
+						id: 'CT',				
 						votes: 7,
 						neighbors: [],
 						initialTeam: 'east',
 						effectivness: 1
 					},
 					{
-						name: 'Delaware',					
+						displayName: 'Delaware',
+						id: 'DE',					
 						votes: 3,
 						neighbors: [],
 						initialTeam: 'east',
 						effectivness: 1
 					},
 					{
-						name: 'Florida',					
+						displayName: 'Florida',
+						id: 'FL',					
 						votes: 29,
 						neighbors: [],
 						initialTeam: 'south',
 						effectivness: 1
 					},
 					{
-						name: 'Georgia',						
+						displayName: 'Georgia',
+						id: 'GA',						
 						votes: 16,
 						neighbors: [],
 						initialTeam: 'south',
 						effectivness: 1
 					},
 					{
-						name: 'Iowa',						
+						displayName: 'Iowa',
+						id: 'IA',						
 						votes: 6,
 						neighbors: [],
 						initialTeam: 'midwest',
 						effectivness: 1
 					},
 					{
-						name: 'Idaho',
+						displayName: 'Idaho',
+						id: 'ID',
 						votes: 4,
 						neighbors: [],
 						initialTeam: 'west',
 						effectivness: 1
 					},
 					{
-						name: 'Illinoia',
+						displayName: 'Illinois',
+						id: 'IL',
 						votes: 20,
 						neighbors: [],
 						initialTeam: 'midwest',
 						effectivness: 1
 					},
 					{
-						name: 'Indiana',
+						displayName: 'Indiana',
+						id: 'IN',
 						votes: 11,
 						neighbors: [],
 						initialTeam: 'midwest',
 						effectivness: 1
 					},
 					{
-						name: 'Kansas',
+						displayName: 'Kansas',
+						id: 'KS',
 						votes: 6,
 						neighbors: [],
 						initialTeam: 'midwest',
 						effectivness: 1
 					},
 					{
-						name: 'Kentucky',
+						displayName: 'Kentucky',
+						id: 'KY',
 						votes: 8,
 						neighbors: [],
 						initialTeam: 'west',
 						effectivness: 1
 					},
 					{
-						name: 'Louisiana',
+						displayName: 'Louisiana',
+						id: 'LA',
 						votes: 8,
 						neighbors: [],
 						initialTeam: 'south',
 						effectivness: 1
 					},
 					{
-						name: 'Massachusetts',
+						displayName: 'Massachusetts',
+						id: 'MA',
 						votes: 11,
 						neighbors: [],
 						initialTeam: 'east',
 						effectivness: 1
 					},
 					{
-						name: 'Maryland',
+						displayName: 'Maryland',
+						id: 'MD',
 						votes: 10,
 						neighbors: [],
 						initialTeam: 'east' ,
 						effectivness: 1
 					},
 					{
-						name: 'Maine',
+						displayName: 'Maine',
+						id: 'ME',
 						votes: 4,
 						neighbors: [],
 						initialTeam: 'east',
 						effectivness: 1
 					},
 					{
-						name: 'Michigan',
+						displayName: 'Michigan',
+						id: 'MI',
 						votes: 16,
 						neighbors: [],
 						initialTeam: 'midwest',
 						effectivness: 1
 					},
 					{
-						name: 'Minnesota',
+						displayName: 'Minnesota',
+						id: 'MN',
 						votes: 10,
 						neighbors: [],
 						initialTeam: 'midwest' ,
 						effectivness: 1
 					},
 					{
-						name: 'Missouri',
+						displayName: 'Missouri',
+						id: 'MO',
 						votes: 10,
 						neighbors: [],
 						initialTeam: 'midwest',
 						effectivness: 1
 					},
 					{
-						name: 'Mississippi',
+						displayName: 'Mississippi',
+						id: 'MS',
 						votes: 6,
 						neighbors: [],
 						initialTeam: 'south' ,
 						effectivness: 1
 					},
 					{
-						name: 'Montana',
+						displayName: 'Montana',
+						id: 'MN',
 						votes: 3,
 						neighbors: [],
 						initialTeam: 'west',
 						effectivness: 1
 					},
 					{
-						name: 'North Carolina',
+						displayName: 'North Carolina',
+						id: 'NC',
 						votes: 15,
 						neighbors: [],
 						initialTeam: 'south' ,
 						effectivness: 1
 					},
 					{
-						name: 'North Dakota',
+						displayName: 'North Dakota',
+						id: 'ND',
 						votes: 3,
 						neighbors: [],
 						initialTeam: 'midwest' ,
 						effectivness: 1
 					},
 					{
-						name: 'Nebraska',
+						displayName: 'Nebraska',
+						id: 'NE',
 						votes: 5,
 						neighbors: [],
 						initialTeam: 'midwest',
 						effectivness: 1
 					},
 					{
-						name: 'New Hampshire',
+						displayName: 'New Hampshire',
+						id: 'NH',
 						votes: 4,
 						neighbors: [],
 						initialTeam: 'east',
 						effectivness: 1
 					},
 					{
-						name: 'New Jersey',
+						displayName: 'New Jersey',
+						id: 'NJ',
 						votes: 14,
 						neighbors: [],
 						initialTeam: 'east' ,
 						effectivness: 1
 					},
 					{
-						name: 'New Mexico',
+						displayName: 'New Mexico',
+						id: 'NM',
 						votes: 5,
 						neighbors: [],
 						initialTeam: 'west',
 						effectivness: 1
 					},
 					{
-						name: 'Nevada',
+						displayName: 'Nevada',
+						id: 'NV',
 						votes: 6,
 						neighbors: [],
 						initialTeam: 'west' ,
 						effectivness: 1
 					},
 					{
-						name: 'New York',
+						displayName: 'New York',
+						id: 'NY',
 						votes: 29,
 						neighbors: [],
 						initialTeam: 'east',
 						effectivness: 1
 					},
 					{
-						name: 'Ohio',
+						displayName: 'Ohio',
+						id: 'OH',
 						votes: 18,
 						neighbors: [],
 						initialTeam: 'midwest',
 						effectivness: 1
 					},
 					{
-						name: 'Oklahoma',
+						displayName: 'Oklahoma',
+						id: 'OK',
 						votes: 7,
 						neighbors: [],
 						initialTeam: 'midwest',
 						effectivness: 1
 					},
 					{
-						name: 'Oregon',
+						displayName: 'Oregon',
+						id: 'OR',
 						votes: 7,
 						neighbors: [],
 						initialTeam: 'west',
 						effectivness: 1
 					},
 					{
-						name: 'Pennsylvania',
+						displayName: 'Pennsylvania',
+						id: 'PA',
 						votes: 20,
 						neighbors: [],
 						initialTeam: 'east',
 						effectivness: 1
 					},
 					{
-						name: 'Rhode Island',
+						displayName: 'Rhode Island',
+						id: 'RI',
 						votes: 4,
 						neighbors: [],
 						initialTeam: 'east',
 						effectivness: 1
 					},
 					{
-						name: 'South Carolina',
+						displayName: 'South Carolina',
+						id: 'SC',
 						votes: 9,
 						neighbors: [],
 						initialTeam: 'south' ,
 						effectivness: 1
 					},
 					{
-						name: 'South Dakota',
+						displayName: 'South Dakota',
+						id: 'SD',
 						votes: 3,
 						neighbors: [],
 						initialTeam: 'midwest',
 						effectivness: 1
 					},
 					{
-						name: 'Tennesse',
+						displayName: 'Tennesse',
+						id: 'TN',
 						votes: 11,
 						neighbors: [],
 						initialTeam: 'south' ,
 						effectivness: 1
 					},
 					{
-						name: 'Texas',
+						displayName: 'Texas',
+						id: 'TX',
 						votes: 38,
 						neighbors: [],
 						initialTeam: 'south' ,
 						effectivness: 1
 					},
 					{
-						name: 'Utah',
+						displayName: 'Utah',
+						id: 'UT',
 						votes: 6,
 						neighbors: [],
 						initialTeam: 'west',
 						effectivness: 1
 					},
 					{
-						name: 'Virgina',
+						displayName: 'Virgina',
+						id: 'VA',
 						votes: 13,
 						neighbors: [],
 						initialTeam: 'south',
 						effectivness: 1
 					},
 					{
-						name: 'Vermont',
+						displayName: 'Vermont',
+						id: 'VT',
 						votes: 3,
 						neighbors: [],
 						initialTeam: 'east',
 						effectivness: 1
 					},
 					{
-						name: 'Washington',
+						displayName: 'Washington',
+						id: 'WA',
 						votes: 12,
 						neighbors: [],
 						initialTeam: 'west',
 						effectivness: 1
 					},
 					{
-						name: 'Wisconsin',
+						displayName: 'Wisconsin',
+						id: 'WI',
 						votes: 10,
 						neighbors: [],
 						initialTeam: 'midwest',
 						effectivness: 1
 					},
 					{
-						name: 'West Virgina',
+						displayName: 'West Virgina',
+						id: 'WV',
 						votes: 5,
 						neighbors: [],
 						initialTeam: 'south',
 						effectivness: 1
 					},
 					{
-						name: 'Wyoming',
+						displayName: 'Wyoming',
+						id: 'WY',
 						votes: 3,
 						neighbors: [],
 						initialTeam: 'west',
 						effectivness: 1
-					},
-					{
-						name: 'D.C.',
-						votes: 3,
-						neighbors: [],
-						initialTeam: 'east',
-						effectivness: 1
 					}
 				];
+
 
 		var color = 'orange';
 
@@ -372,107 +418,144 @@ $(document).ready(function() {
 	
 			console.log('board setup');
 	
-				for(var i = 0; i < stateList.length; i++  ) {
+			//var elements = boardMap.getElementsByClassName('state');
+
+			//console.log(elements);
+
+			// elements[0].addEventListener('click', function(event) {
+			// 	console.log('state class');
+			// });
+
+			that.assignClickBehavior( that.repositionMapOnClick );
+
+			that.assignDoubleClickBehavior( that.highlightState );
+
+			that.refreshLabels();
+			
+		};
+
+
+		this.assignClickBehavior = function(callback) {
+			
+			for(var i = 0; i < statePath.length; i++  ) {
+			
+				statePath[i].addEventListener('click', function(event) {
+
+					callback(event.target);
+	
+				});
+			};
+			
+		};
+
+		this.assignDoubleClickBehavior = function(callback) {
+			
+			for(var i = 0; i < statePath.length; i++  ) {
+			
+				statePath[i].addEventListener('dblclick', function(event) {
+
+					callback(event.target);
+	
+				});
+			};
+			
+		};
+
+		this.printTarget = function(state) {
+			console.log(state);
+		}
+
+
+		this.createLabels = function() {
+
+			for(var i = 0; i < stateData.length; i++) {
+
+				var box = statePath[i].getBoundingClientRect();
+
+				//console.log(box);
+
+				var label = $('<h4>');
+
+				label.css({'top': box.top + (box.height / 4), 'left': box.left + (box.width / 3)});
+			 
+			 	label.html(stateData[i].displayName);
+
+			 	$('#boardContainer').append(label);
+		 	
+		 	};
+		};
+
+		this.refreshLabels = function() {
+			
+			console.log('refresh labels');
+
+		};
+
+		this.repositionMapManual = function(top, left, zoom) {
+
+			$('#usMap').animate({'top': top, 'left': left, 'width': zoom}, 500, 'linear', that.refreshLabels);
+
+			console.log('repos');
+
+		};
+
+		this.repositionMapOnClick = function(state) {
+
+			var stateBox = state.getBoundingClientRect();
+
+			console.log(stateBox);
+
+			var currentMapXpos = $('#usMap').css('left');
+
+			console.log(currentMapXpos); 
+
+			$('#usMap').animate({'top': stateBox.top , 'left': stateBox.left}, 500, 'linear', that.refreshLabels);
+
+			console.log('repos');
+
+		};
+
+		this.assignStripPattern = function(state) {
+
+			state.setAttribute('fill', 'url(#stripes)' );
+
+		}
+
+		this.changeStateColor = function(state) {
+			
+
+			state.setAttribute('fill', 'url(#stripes)');
+			state.setAttribute('stroke', 'white');
+
+		};
+			
+		this.highlightState = function(state, color) {
+			state.style.strokeWidth = '.4%';
+			state.style.stroke = 'white';
+		};
+
+		this.updateScore = function(state) {
 				
-					stateList[i].addEventListener('click', function(event) {
+				// var text = document.createElement("TEXT");
+				// var t = document.createTextNode("test test test");
+				// text.appendChild(t);
+				// state.appendChild(text);
 
-						//that.changeStateColor(event.target, that.color) ;
 
-						//that.highlightState(event.target, that.color) ;
-
-						//that.updateScoreOf(event.target);
-
-						that.changeStateColor(event.target);
-
-						//console.log(event.target);
-
-						//console.log(that.state.cali			})		
-					});
-				};
-			};
-
-			this.refreshLabels = function() {
+				//var pRect = state.getBoundingClientRect();
 				
-				console.log('refresh labels');
+				//var pRect2 = state.getBBox();
 
-				for(var i = 0; i < 49; i++) {
+				//console.log('boundrect: ', pRect);
+				//console.log('bbox: ', pRect2);
 
-					var box = stateList[i].getBoundingClientRect();
-
-					var label = $('<h4>');
-
-					label.css({'top': box.top + (box.height / 4), 'left': box.left + (box.width / 3)});
-				 
-				 	label.html(state[i].name);
-
-				 	$('#boardContainer').append(label);
-			 	
-			 	};
-			};
-
-			this.repositionMap = function(top, left, zoom) {
-
-				$('#usMap').animate({'top': top, 'left': left, 'width': zoom}, 500, 'linear', that.refreshLabels);
-
-				console.log('repos');
-
-			};
-
-			this.changeStateColor = function(state) {
+				// var xCenter = pRect1.top / 2;
+				// var yCenter = pRect1.y / 2;
 				
-
-				// pattern = document.createElementNS(state, 'pattern');
-
-				// pattern.setAttribute('id', 'test');
-				// pattern.setAttribute('patternUnits','userSpaceOnUse');
-				// pattern.setAttribute('width','10');
-				// pattern.setAttribute('height','10');
-				// pattern.setAttribute('x','0');
-				// pattern.setAttribute('y','0');
-				// pattern.setAttribute('viewBox','0 0 10 10');
-
-				// state.appendChild(pattern);
-
-				state.setAttribute('fill', 'url(#stripes)');
-				state.setAttribute('stroke', 'white');
-				//state.setAttribute('style', 'fill: url(#triangle)');
-
-
-				//console.log(state);
-
-				//var pattern = '<pattern id="boundingPattern" width=".50" height=".50" patternContentUnits="objectBoundingBox"><circle cx=".250" cy=".250” r=".1" fill="#ec7677" /></pattern>';
-
-				//state.style.class = pattern;
-
-			};
-				
-			this.highlightState = function(state, color) {
-				state.style.strokeWidth = '.4%';
-				state.style.stroke = 'white';
+				//$('#score').css({'top': pRect.top + (pRect.height / 4), 'left': pRect.left + (pRect.width / 3)});
 			};
 
-			this.updateScore = function(state) {
-					
-					// var text = document.createElement("TEXT");
-					// var t = document.createTextNode("test test test");
-					// text.appendChild(t);
-					// state.appendChild(text);
-
-
-					//var pRect = state.getBoundingClientRect();
-					
-					//var pRect2 = state.getBBox();
-
-					//console.log('boundrect: ', pRect);
-					//console.log('bbox: ', pRect2);
-
-					// var xCenter = pRect1.top / 2;
-					// var yCenter = pRect1.y / 2;
-					
-					//$('#score').css({'top': pRect.top + (pRect.height / 4), 'left': pRect.left + (pRect.width / 3)});
-				};
-
-			};
+		};
 	
 
 
@@ -485,6 +568,8 @@ $(document).ready(function() {
  	var newgame = new game();
 
  	newgame.setupBoard();
+
+
 
 	$('#button-1').on('click', function() {
 
