@@ -421,13 +421,22 @@ $(document).ready(function() {
 			this.changeStateColor = function(state) {
 				
 
-				pattern = document.createElementNS(state, 'pattern');
+				// pattern = document.createElementNS(state, 'pattern');
 
-				pattern.setAttribute('id', 'test');
+				// pattern.setAttribute('id', 'test');
+				// pattern.setAttribute('patternUnits','userSpaceOnUse');
+				// pattern.setAttribute('width','10');
+				// pattern.setAttribute('height','10');
+				// pattern.setAttribute('x','0');
+				// pattern.setAttribute('y','0');
+				// pattern.setAttribute('viewBox','0 0 10 10');
 
-				state.appendChild(pattern);
+				// state.appendChild(pattern);
 
-				state.setAttribute('style', 'fill: url(#test);');
+				state.setAttribute('fill', 'url(#stripes)');
+				state.setAttribute('stroke', 'white');
+				//state.setAttribute('style', 'fill: url(#triangle)');
+
 
 				//console.log(state);
 
