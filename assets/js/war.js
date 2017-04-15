@@ -22,7 +22,7 @@ $(document).ready(function() {
 
 		var boardMap = document.getElementById('usMap').contentDocument.getElementById("outlines");
 
-		var pattern = document.getElementById('usMap').contentDocument.getElementsByTagName("pattern");
+		var patternArray = document.getElementById('usMap').contentDocument.getElementsByTagName("pattern");
 
 		var statePath = boardMap.getElementsByTagName("path");
 		
@@ -32,7 +32,7 @@ $(document).ready(function() {
 						id: 'AL',
 						votes: 9,
 						neighbors: [],
-						initialTeam: 'south',
+						team: 'south',
 						effectivness: 1
 					},
 					{
@@ -40,7 +40,7 @@ $(document).ready(function() {
 						id: 'AR',
 						votes: 6,
 						neighbors: [],
-						initialTeam: 'south',
+						team: 'south',
 						effectivness: 1
 					},
 					{
@@ -48,7 +48,7 @@ $(document).ready(function() {
 						id: 'AZ',
 						votes: 11,
 						neighbors: [],
-						initialTeam: 'west',
+						team: 'west',
 						effectivness: 1
 					},
 					{
@@ -56,7 +56,7 @@ $(document).ready(function() {
 						id: 'CA',
 						votes: 55,
 						neighbors: [],
-						initialTeam: 'west',
+						team: 'west',
 						effectivness: 1
 					},
 					{
@@ -64,7 +64,7 @@ $(document).ready(function() {
 						id: 'CO',						
 						votes: 9,
 						neighbors: [],
-						initialTeam: 'west',
+						team: 'west',
 						effectivness: 1
 					},
 					{
@@ -72,7 +72,7 @@ $(document).ready(function() {
 						id: 'CT',				
 						votes: 7,
 						neighbors: [],
-						initialTeam: 'east',
+						team: 'east',
 						effectivness: 1
 					},
 					{
@@ -80,7 +80,7 @@ $(document).ready(function() {
 						id: 'DE',					
 						votes: 3,
 						neighbors: [],
-						initialTeam: 'east',
+						team: 'east',
 						effectivness: 1
 					},
 					{
@@ -88,7 +88,7 @@ $(document).ready(function() {
 						id: 'FL',					
 						votes: 29,
 						neighbors: [],
-						initialTeam: 'south',
+						team: 'south',
 						effectivness: 1
 					},
 					{
@@ -96,7 +96,7 @@ $(document).ready(function() {
 						id: 'GA',						
 						votes: 16,
 						neighbors: [],
-						initialTeam: 'south',
+						team: 'south',
 						effectivness: 1
 					},
 					{
@@ -104,7 +104,7 @@ $(document).ready(function() {
 						id: 'IA',						
 						votes: 6,
 						neighbors: [],
-						initialTeam: 'midwest',
+						team: 'midwest',
 						effectivness: 1
 					},
 					{
@@ -112,7 +112,7 @@ $(document).ready(function() {
 						id: 'ID',
 						votes: 4,
 						neighbors: [],
-						initialTeam: 'west',
+						team: 'west',
 						effectivness: 1
 					},
 					{
@@ -120,7 +120,7 @@ $(document).ready(function() {
 						id: 'IL',
 						votes: 20,
 						neighbors: [],
-						initialTeam: 'midwest',
+						team: 'midwest',
 						effectivness: 1
 					},
 					{
@@ -128,7 +128,7 @@ $(document).ready(function() {
 						id: 'IN',
 						votes: 11,
 						neighbors: [],
-						initialTeam: 'midwest',
+						team: 'midwest',
 						effectivness: 1
 					},
 					{
@@ -136,7 +136,7 @@ $(document).ready(function() {
 						id: 'KS',
 						votes: 6,
 						neighbors: [],
-						initialTeam: 'midwest',
+						team: 'midwest',
 						effectivness: 1
 					},
 					{
@@ -144,7 +144,7 @@ $(document).ready(function() {
 						id: 'KY',
 						votes: 8,
 						neighbors: [],
-						initialTeam: 'west',
+						team: 'west',
 						effectivness: 1
 					},
 					{
@@ -152,7 +152,7 @@ $(document).ready(function() {
 						id: 'LA',
 						votes: 8,
 						neighbors: [],
-						initialTeam: 'south',
+						team: 'south',
 						effectivness: 1
 					},
 					{
@@ -160,7 +160,7 @@ $(document).ready(function() {
 						id: 'MA',
 						votes: 11,
 						neighbors: [],
-						initialTeam: 'east',
+						team: 'east',
 						effectivness: 1
 					},
 					{
@@ -168,7 +168,7 @@ $(document).ready(function() {
 						id: 'MD',
 						votes: 10,
 						neighbors: [],
-						initialTeam: 'east' ,
+						team: 'east' ,
 						effectivness: 1
 					},
 					{
@@ -176,7 +176,7 @@ $(document).ready(function() {
 						id: 'ME',
 						votes: 4,
 						neighbors: [],
-						initialTeam: 'east',
+						team: 'east',
 						effectivness: 1
 					},
 					{
@@ -184,7 +184,7 @@ $(document).ready(function() {
 						id: 'MI',
 						votes: 16,
 						neighbors: [],
-						initialTeam: 'midwest',
+						team: 'midwest',
 						effectivness: 1
 					},
 					{
@@ -192,7 +192,7 @@ $(document).ready(function() {
 						id: 'MN',
 						votes: 10,
 						neighbors: [],
-						initialTeam: 'midwest' ,
+						team: 'midwest' ,
 						effectivness: 1
 					},
 					{
@@ -200,7 +200,7 @@ $(document).ready(function() {
 						id: 'MO',
 						votes: 10,
 						neighbors: [],
-						initialTeam: 'midwest',
+						team: 'midwest',
 						effectivness: 1
 					},
 					{
@@ -208,7 +208,7 @@ $(document).ready(function() {
 						id: 'MS',
 						votes: 6,
 						neighbors: [],
-						initialTeam: 'south' ,
+						team: 'south' ,
 						effectivness: 1
 					},
 					{
@@ -216,7 +216,7 @@ $(document).ready(function() {
 						id: 'MN',
 						votes: 3,
 						neighbors: [],
-						initialTeam: 'west',
+						team: 'west',
 						effectivness: 1
 					},
 					{
@@ -224,7 +224,7 @@ $(document).ready(function() {
 						id: 'NC',
 						votes: 15,
 						neighbors: [],
-						initialTeam: 'south' ,
+						team: 'south' ,
 						effectivness: 1
 					},
 					{
@@ -232,7 +232,7 @@ $(document).ready(function() {
 						id: 'ND',
 						votes: 3,
 						neighbors: [],
-						initialTeam: 'midwest' ,
+						team: 'midwest' ,
 						effectivness: 1
 					},
 					{
@@ -240,7 +240,7 @@ $(document).ready(function() {
 						id: 'NE',
 						votes: 5,
 						neighbors: [],
-						initialTeam: 'midwest',
+						team: 'midwest',
 						effectivness: 1
 					},
 					{
@@ -248,7 +248,7 @@ $(document).ready(function() {
 						id: 'NH',
 						votes: 4,
 						neighbors: [],
-						initialTeam: 'east',
+						team: 'east',
 						effectivness: 1
 					},
 					{
@@ -256,7 +256,7 @@ $(document).ready(function() {
 						id: 'NJ',
 						votes: 14,
 						neighbors: [],
-						initialTeam: 'east' ,
+						team: 'east' ,
 						effectivness: 1
 					},
 					{
@@ -264,7 +264,7 @@ $(document).ready(function() {
 						id: 'NM',
 						votes: 5,
 						neighbors: [],
-						initialTeam: 'west',
+						team: 'west',
 						effectivness: 1
 					},
 					{
@@ -272,7 +272,7 @@ $(document).ready(function() {
 						id: 'NV',
 						votes: 6,
 						neighbors: [],
-						initialTeam: 'west' ,
+						team: 'west' ,
 						effectivness: 1
 					},
 					{
@@ -280,7 +280,7 @@ $(document).ready(function() {
 						id: 'NY',
 						votes: 29,
 						neighbors: [],
-						initialTeam: 'east',
+						team: 'east',
 						effectivness: 1
 					},
 					{
@@ -288,7 +288,7 @@ $(document).ready(function() {
 						id: 'OH',
 						votes: 18,
 						neighbors: [],
-						initialTeam: 'midwest',
+						team: 'midwest',
 						effectivness: 1
 					},
 					{
@@ -296,7 +296,7 @@ $(document).ready(function() {
 						id: 'OK',
 						votes: 7,
 						neighbors: [],
-						initialTeam: 'midwest',
+						team: 'midwest',
 						effectivness: 1
 					},
 					{
@@ -304,7 +304,7 @@ $(document).ready(function() {
 						id: 'OR',
 						votes: 7,
 						neighbors: [],
-						initialTeam: 'west',
+						team: 'west',
 						effectivness: 1
 					},
 					{
@@ -312,7 +312,7 @@ $(document).ready(function() {
 						id: 'PA',
 						votes: 20,
 						neighbors: [],
-						initialTeam: 'east',
+						team: 'east',
 						effectivness: 1
 					},
 					{
@@ -320,7 +320,7 @@ $(document).ready(function() {
 						id: 'RI',
 						votes: 4,
 						neighbors: [],
-						initialTeam: 'east',
+						team: 'east',
 						effectivness: 1
 					},
 					{
@@ -328,7 +328,7 @@ $(document).ready(function() {
 						id: 'SC',
 						votes: 9,
 						neighbors: [],
-						initialTeam: 'south' ,
+						team: 'south' ,
 						effectivness: 1
 					},
 					{
@@ -336,7 +336,7 @@ $(document).ready(function() {
 						id: 'SD',
 						votes: 3,
 						neighbors: [],
-						initialTeam: 'midwest',
+						team: 'midwest',
 						effectivness: 1
 					},
 					{
@@ -344,7 +344,7 @@ $(document).ready(function() {
 						id: 'TN',
 						votes: 11,
 						neighbors: [],
-						initialTeam: 'south' ,
+						team: 'south' ,
 						effectivness: 1
 					},
 					{
@@ -352,7 +352,7 @@ $(document).ready(function() {
 						id: 'TX',
 						votes: 38,
 						neighbors: [],
-						initialTeam: 'south' ,
+						team: 'south' ,
 						effectivness: 1
 					},
 					{
@@ -360,7 +360,7 @@ $(document).ready(function() {
 						id: 'UT',
 						votes: 6,
 						neighbors: [],
-						initialTeam: 'west',
+						team: 'west',
 						effectivness: 1
 					},
 					{
@@ -368,7 +368,7 @@ $(document).ready(function() {
 						id: 'VA',
 						votes: 13,
 						neighbors: [],
-						initialTeam: 'south',
+						team: 'south',
 						effectivness: 1
 					},
 					{
@@ -376,7 +376,7 @@ $(document).ready(function() {
 						id: 'VT',
 						votes: 3,
 						neighbors: [],
-						initialTeam: 'east',
+						team: 'east',
 						effectivness: 1
 					},
 					{
@@ -384,7 +384,7 @@ $(document).ready(function() {
 						id: 'WA',
 						votes: 12,
 						neighbors: [],
-						initialTeam: 'west',
+						team: 'west',
 						effectivness: 1
 					},
 					{
@@ -392,7 +392,7 @@ $(document).ready(function() {
 						id: 'WI',
 						votes: 10,
 						neighbors: [],
-						initialTeam: 'midwest',
+						team: 'midwest',
 						effectivness: 1
 					},
 					{
@@ -400,7 +400,7 @@ $(document).ready(function() {
 						id: 'WV',
 						votes: 5,
 						neighbors: [],
-						initialTeam: 'south',
+						team: 'south',
 						effectivness: 1
 					},
 					{
@@ -408,13 +408,10 @@ $(document).ready(function() {
 						id: 'WY',
 						votes: 3,
 						neighbors: [],
-						initialTeam: 'west',
+						team: 'west',
 						effectivness: 1
 					}
 				];
-
-
-		var color = 'orange';
 
 		var that = this;
 
@@ -430,10 +427,10 @@ $(document).ready(function() {
 			// 	console.log('state class');
 			// });
 
-			that.assignClickBehavior( that.printTargetInfo );
+			that.assignClickBehavior( that.highlightState );
 
 
-			that.assignDoubleClickBehavior( that.repositionMapOnClick );
+			that.assignDoubleClickBehavior( that.zoomToState );
 
 //			that.assignDoubleClickBehavior( that.highlightState );
 
@@ -503,17 +500,14 @@ $(document).ready(function() {
 
 		this.repositionMapManual = function(top, left, zoom) {
 
-			$('#usMap').animate({'top': top, 'left': left, 'width': zoom}, 500, 'linear', that.refreshLabels);
-
-			console.log('repos');
+			$('#usMap').css({'top': top, 'left': left, 'width': zoom});
 
 		};
 
-		this.repositionMapOnClick = function(state) {
+		this.repositionMapCartesianOnClick = function(state) {
 
 			var stateBox = state.getBoundingClientRect();
 			var mapBox = board.getBoundingClientRect();
-
 
 			//quadrant 1
 
@@ -548,29 +542,35 @@ $(document).ready(function() {
 			}
 
 			//that.rescaleMap(2);
-
 		};
 
-		this.rescaleMap = function(factor) {
-			$('#usMap').css('transform', 'scale(' + factor + ')');
-		};
+		this.zoomToState = function(state) {
 
-		this.assignStripPattern = function(state) {
+			var scale = 100;
 
-			state.setAttribute('fill', 'url(#stripes)' );
+			var stateBBox = state.getBBox();
 
-		};
+			var newCoords = (stateBBox.x - scale) + ' ' + (stateBBox.y - scale) + ' ' + (stateBBox.width + scale*2) + ' ' + (stateBBox.height + scale*2);
 
-		this.changeStateColor = function(state) {
-			
+			svg.setAttribute('viewBox',  newCoords);
+		}
 
-			state.setAttribute('fill', 'url(#stripes)');
-			state.setAttribute('stroke', 'white');
+
+
+		this.assignPattern = function() {
+
+			for( var i = 0; i < statePath.length - 1; i++  ) {
+		
+				var pattern = 'url(#' + stateData[i].team + ')';
+
+				statePath[i].setAttribute('fill', pattern);
+
+			};
 
 		};
 			
 		this.highlightState = function(state, color) {
-			state.style.strokeWidth = '.4%';
+			state.style.strokeWidth = '.1%';
 			state.style.stroke = 'white';
 		};
 
@@ -609,6 +609,7 @@ $(document).ready(function() {
 
  	newgame.setupBoard();
 
+ 	newgame.assignPattern();
 
 
 	$('#button-1').on('click', function() {
