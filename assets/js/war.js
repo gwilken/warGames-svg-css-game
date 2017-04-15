@@ -18,6 +18,8 @@ $(document).ready(function() {
 
 		var board = document.getElementById('usMap');
 
+		var svg = document.getElementById('usMap').contentDocument.getElementById("mapSVG");
+
 		var boardMap = document.getElementById('usMap').contentDocument.getElementById("outlines");
 
 		var pattern = document.getElementById('usMap').contentDocument.getElementsByTagName("pattern");
@@ -428,9 +430,12 @@ $(document).ready(function() {
 			// 	console.log('state class');
 			// });
 
-			that.assignClickBehavior( that.repositionMapOnClick );
+			that.assignClickBehavior( that.printTargetInfo );
 
-			that.assignDoubleClickBehavior( that.highlightState );
+
+			that.assignDoubleClickBehavior( that.repositionMapOnClick );
+
+//			that.assignDoubleClickBehavior( that.highlightState );
 
 			that.refreshLabels();
 			
@@ -463,8 +468,11 @@ $(document).ready(function() {
 			
 		};
 
-		this.printTarget = function(state) {
-			console.log(state);
+		this.printTargetInfo = function(state) {
+			console.log( 'Path info: ', state );
+			console.log( 'Bounding Rectangle: ', state.getBoundingClientRect() );
+			console.log( 'BBox: ', state.getBBox() );
+			console.log( 'Current viewBox of SVG: ', svg.getAttribute('viewBox'));
 		}
 
 
@@ -513,8 +521,6 @@ $(document).ready(function() {
 				
 				$('#usMap').css({'left': (((mapBox.width /2) - stateBox.x)) - (stateBox.width/2), 'top': (((mapBox.height /2) - stateBox.y)) - (stateBox.height/2)  });
 
-				console.log('q1');
-
 			}
 
 			//quadrant 2
@@ -523,7 +529,6 @@ $(document).ready(function() {
 
 				$('#usMap').css({'left': (mapBox.x - (stateBox.x - (mapBox.width/2)) - (stateBox.width/2))  , 'top': (((mapBox.height /2) - stateBox.y)) - (stateBox.height/2)  });
 
-				console.log('q2');
 			}
 
 			//quadrant 3
@@ -532,7 +537,6 @@ $(document).ready(function() {
 				
 				$('#usMap').css({'left':  (mapBox.x - (stateBox.x - (mapBox.width/2)) - (stateBox.width/2)),  'top': (mapBox.y - (stateBox.y - mapBox.height/2) - stateBox.height/2) });
 
-				console.log('q3');
 			}
 
 			//quadrant 4
@@ -541,11 +545,7 @@ $(document).ready(function() {
 				
 				$('#usMap').css({'left': (((mapBox.width /2) - stateBox.x)) - (stateBox.width/2), 'top': (mapBox.y - (stateBox.y - mapBox.height/2) - stateBox.height/2) });
 
-				console.log('q4');
-
 			}
-
-
 
 			//that.rescaleMap(2);
 
