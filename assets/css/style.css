@@ -17,16 +17,17 @@ h3 {
 h4 {
 	position: relative;
 	font-size: 22px;
-/*	z-index: 10;
-*/	color: green;
+	color: green;
 	font-family: 'Press Start 2P';
 }
 
 ul {
+	margin-top: -3%;
 	list-style-type: none;
 }
 
 li {
+
 	position: relative;
 	text-align: left;
 	font-size: 20px;
@@ -39,6 +40,11 @@ p {
 	font-size: 30px;
 	z-index: 10;
 }
+
+u {
+    text-decoration: none;
+    border-bottom: 5px solid green;
+  }​
 
 #mainContainer {
 	position: relative;

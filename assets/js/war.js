@@ -413,6 +413,10 @@ $(document).ready(function() {
 					}
 				];
 
+		var team = 'midwest';
+
+		var zoomed = false;
+
 		var that = this;
 
 		this.setupBoard = function() {
@@ -511,7 +515,6 @@ $(document).ready(function() {
 		this.refreshLabels = function() {
 			
 			console.log('refresh labels');
-
 		};
 
 		this.repositionMapManual = function(top, left, zoom) {
@@ -591,28 +594,54 @@ $(document).ready(function() {
 		this.highlightStateOff = function(state) {
 			state.style.strokeWidth = '.1%';
 			state.style.stroke = '#00b300';
+		};
+
+		this.showLabel = function(state) {
+
+		// var text = document.createElement("TEXT");
+		// var t = document.createTextNode("test test test");
+		// text.appendChild(t);
+		// state.appendChild(text);
+
+
+		//var pRect = state.getBoundingClientRect();
+		
+		//var pRect2 = state.getBBox();
+
+		//console.log('boundrect: ', pRect);
+		//console.log('bbox: ', pRect2);
+
+		// var xCenter = pRect1.top / 2;
+		// var yCenter = pRect1.y / 2;
+		
+		//$('#score').css({'top': pRect.top + (pRect.height / 4), 'left': pRect.left + (pRect.width / 3)});
+	
+		};
+
+		this.updateStatus = function(state) {
+			
+			for(var i = 0; i < stateData.length; i++) {
+
+				if(stateData[i].team === team && stateData[i].votes > 0 && $('#' + stateData[i].id + 'ListItem').length != true) {
+					console.log(stateData[i].displayName);
+
+					var listItem = $('<li>');
+					
+					listItem.text(stateData[i].displayName);
+
+					$('#userStatusUl').append(listItem);
+
+				}
+
+			}
+
+ 			// && $('#' + stateData[i].id + 'ListItem').length === null
+			//if(state is in team 7 state votes > 0 && li doesnt exist already)
+		};
+
+		this.updateMessages = function() {
+
 		}
-
-		this.updateScore = function(state) {
-				
-				// var text = document.createElement("TEXT");
-				// var t = document.createTextNode("test test test");
-				// text.appendChild(t);
-				// state.appendChild(text);
-
-
-				//var pRect = state.getBoundingClientRect();
-				
-				//var pRect2 = state.getBBox();
-
-				//console.log('boundrect: ', pRect);
-				//console.log('bbox: ', pRect2);
-
-				// var xCenter = pRect1.top / 2;
-				// var yCenter = pRect1.y / 2;
-				
-				//$('#score').css({'top': pRect.top + (pRect.height / 4), 'left': pRect.left + (pRect.width / 3)});
-			};
 
 		};
 	
@@ -629,6 +658,9 @@ $(document).ready(function() {
  	newgame.setupBoard();
 
  	newgame.assignPattern();
+
+ 	newgame.updateStatus();
+
 
 
 	$('#button-1').on('click', function() {
