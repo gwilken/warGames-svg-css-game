@@ -666,21 +666,17 @@ $(document).ready(function() {
 					console.log(stateData[i].displayName);
 
 					var listItem = $('<li>');
-					var scoreSpan = $('<span>');
+					var score = $('<u>');
 
 					listItem.attr('id', stateData[i].id + '-ListItem');
 					listItem.attr('data-state', stateData[i].id);
 
 					listItem.text(stateData[i].displayName + '  ');
 
-					scoreSpan.addClass('invert');
-					scoreSpan.html(stateData[i].votes);
+					score.html(stateData[i].votes);
+				//	score.addClass('align-right');
 
-					listItem.append(scoreSpan);
-
-					
-
-					//console.log(num);
+					listItem.append(score);
 
 					$('#userStatusUl').append(listItem);
 
@@ -699,19 +695,19 @@ $(document).ready(function() {
 
 			var listItem = $('<li>');
 
-			//var cursor = $('<span>');
+			var terminalList = $('#terminalMessageUl');
 
 			listItem.addClass('termMsg');
 
-			//cursor.addClass('blinkingCursor');
-
 			listItem.text(message);
-			
-			//cursor.text('|');
 
-			//listItem.append(cursor);
+			if( $('.termMsg').length > 13) {
 
-			$('#terminalMessageUl').prepend(listItem);
+				$('.termMsg').last().remove();
+
+			};
+
+			terminalList.prepend(listItem);
 
 		}
 

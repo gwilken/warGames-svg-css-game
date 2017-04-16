@@ -22,7 +22,7 @@ h4 {
 }
 
 ul {
-	margin-top: -3%;
+	margin-top: -1%;
 	list-style-type: none;
 }
 
@@ -91,9 +91,9 @@ u {
 	left: 0;
 	bottom: 0;
 	height: 38%;
-	min-height: 387px;
-	width: 96%;
-	margin: 3% 0% 2% 1%;
+/*	min-height: 417px;
+*/	width: 96%;
+	margin: 0% 0% 1% 1%;
 	border: green double 5px;
 	text-align: center;
 	display: inline-flex;
