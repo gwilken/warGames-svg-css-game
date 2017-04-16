@@ -15,9 +15,10 @@ h4 {
 }
 
 #boardContainer {
-	position: fixed;
+	position: absolute;
 	width: 100%;
-	margin: 4% 5% 2% 3%;
+	margin: 3% 0% 3% 1%;
+	height: auto;
 	top: 0;
 	left: 0;
 }
@@ -26,8 +27,8 @@ h4 {
 	position: relative;
 	width: 100%;
 	height: 100%;
-	top: 0;
-	left: 0;
+/*	top: 0;
+	left: 0;*/
 }
 
 p {

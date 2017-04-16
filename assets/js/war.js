@@ -144,7 +144,7 @@ $(document).ready(function() {
 						id: 'KY',
 						votes: 8,
 						neighbors: [],
-						team: 'west',
+						team: 'south',
 						effectivness: 1
 					},
 					{
@@ -427,12 +427,11 @@ $(document).ready(function() {
 			// 	console.log('state class');
 			// });
 
-			that.assignClickBehavior( that.highlightState );
-
+			that.assignClickBehavior( that.printTargetInfo );
 
 			that.assignDoubleClickBehavior( that.zoomToState );
 
-//			that.assignDoubleClickBehavior( that.highlightState );
+			that.assignHoverBehavior( that.highlightState, that.highlightStateOff );
 
 			that.refreshLabels();
 			
@@ -450,6 +449,26 @@ $(document).ready(function() {
 				});
 			};
 			
+		};
+
+		this.assignHoverBehavior = function(callbackHover, callbackOut) {
+
+			for(var i = 0; i < statePath.length; i++  ) {
+			
+				statePath[i].addEventListener('mouseover', function(event) {
+
+					callbackHover(event.target);			
+
+				});
+
+				statePath[i].addEventListener('mouseout', function(event) {
+
+					callbackOut(event.target);
+
+				});
+		
+			};
+		
 		};
 
 		this.assignDoubleClickBehavior = function(callback) {
@@ -555,11 +574,9 @@ $(document).ready(function() {
 			svg.setAttribute('viewBox',  newCoords);
 		}
 
-
-
 		this.assignPattern = function() {
 
-			for( var i = 0; i < statePath.length - 1; i++  ) {
+			for( var i = 0; i < statePath.length; i++  ) {
 		
 				var pattern = 'url(#' + stateData[i].team + ')';
 
@@ -570,9 +587,14 @@ $(document).ready(function() {
 		};
 			
 		this.highlightState = function(state, color) {
-			state.style.strokeWidth = '.1%';
-			state.style.stroke = 'white';
+			state.style.strokeWidth = '.5%';
+			state.style.stroke = '#33ff33';
 		};
+ 
+		this.highlightStateOff = function(state) {
+			state.style.strokeWidth = '.1%';
+			state.style.stroke = '#00b300';
+		}
 
 		this.updateScore = function(state) {
 				
