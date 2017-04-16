@@ -1,4 +1,4 @@
-body, html {
+body {
 	background-color: black;
 }
 
@@ -6,29 +6,32 @@ h1 {
 /*	font-family:;
 */}
 
+h2 {
+
+}
+
+h3 {
+
+}
+
 h4 {
-	position: fixed;
-	font-size: 24px;
+	position: relative;
+	font-size: 22px;
 /*	z-index: 10;
 */	color: green;
 	font-family: 'Press Start 2P';
 }
 
-#boardContainer {
-	position: absolute;
-	width: 100%;
-	margin: 3% 0% 3% 1%;
-	height: auto;
-	top: 0;
-	left: 0;
+ul {
+	list-style-type: none;
 }
 
-#usMap {
+li {
 	position: relative;
-	width: 100%;
-	height: 100%;
-/*	top: 0;
-	left: 0;*/
+	text-align: left;
+	font-size: 20px;
+	font-family: 'Press Start 2P';
+	color: green;
 }
 
 p {
@@ -37,8 +40,61 @@ p {
 	z-index: 10;
 }
 
-#score {
+#mainContainer {
+	position: relative;
+}
 
+#boardContainer {
+/*	position: absolute;
+*/	width: 100%;
+	margin: 2% 2% 1% 0%; 
+	height: auto;
+}
+
+#usMap {
+	position: relative;
+	width: 99%;
+	height: 100%;
+	text-align: center;
+/*	top: 0;
+	left: 0;*/
+}
+
+#terminalContainer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	height: 38%;
+	width: 96%;
+	margin: 3% 0% 2% 1%;
+	border: green double 5px;
+	text-align: center;
+	display: inline-flex;
+}
+
+#userInfo {
+	width: 45%;
+	border-right: green solid 1px;
+	float: left;
+}
+
+#userStatusUl {
+	font-size: 18px;
+	float: left;
+}
+
+.userStatusLi {
+	float: left;
+	text-align: left;
+	color: green;
+}
+
+#terminalMessages {
+	width: 55%;
+	float: right;
+}
+
+#score {
 	position: fixed;
 	top: 0;
 	left: 0;

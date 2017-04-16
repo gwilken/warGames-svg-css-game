@@ -433,7 +433,7 @@ $(document).ready(function() {
 
 			that.assignHoverBehavior( that.highlightState, that.highlightStateOff );
 
-			that.refreshLabels();
+			//that.refreshLabels();
 			
 		};
 
@@ -466,9 +466,7 @@ $(document).ready(function() {
 					callbackOut(event.target);
 
 				});
-		
 			};
-		
 		};
 
 		this.assignDoubleClickBehavior = function(callback) {
@@ -490,7 +488,6 @@ $(document).ready(function() {
 			console.log( 'BBox: ', state.getBBox() );
 			console.log( 'Current viewBox of SVG: ', svg.getAttribute('viewBox'));
 		}
-
 
 		this.createLabels = function() {
 
