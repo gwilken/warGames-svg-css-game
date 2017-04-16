@@ -421,6 +421,7 @@ $(document).ready(function() {
 
 		var that = this;
 
+
 		var clickChoseTeam = function(event) {
 
 			console.log('fired');
@@ -429,9 +430,53 @@ $(document).ready(function() {
 
 			that.updateMessage('Team ' + that.team + ' chosen');
 
+			highlightTeamOff();
+
+			for(var i = 0; i < statePath.length; i++  ) {
+
+				statePath[i].removeEventListener('mouseover', highlightTeam);
+			
+				statePath[i].removeEventListener('mouseout', highlightTeamOff);
+
+				statePath[i].removeEventListener('click', clickChoseTeam);
+
+			};
+
+
 			that.updateStatus(that.gameLoop);
 
 		};
+
+		var zoomToState = function(event) {
+
+			var state = event.target;
+
+			that.updateMessage('Zoom...');
+
+			var scale = 100;
+
+			var stateBBox = state.getBBox();
+
+			var newCoords = (stateBBox.x - scale) + ' ' + (stateBBox.y - scale) + ' ' + (stateBBox.width + scale*2) + ' ' + (stateBBox.height + scale*2);
+
+			svg.setAttribute('viewBox',  newCoords);
+
+			zoomed = true;
+
+			$('#zoomOut').css('display', 'inline');
+		}
+
+		var zoomOut = function() {
+
+			console.log('zoom out');
+
+			svg.setAttribute('viewBox', initialViewBox);
+
+			zoomed = false;
+
+			$('#zoomOut').css('display', 'none');
+		}
+
 
 		var clickReturnState = function(event) {
 
@@ -440,15 +485,69 @@ $(document).ready(function() {
 		};
 
 
+		var highlightState = function(event) {
+
+			var state = event.target;
+
+			//that.updateMessage(state.getAttribute('id') + ' selected');
+
+			state.style.strokeWidth = '.5%';
+			state.style.stroke = '#33ff33';
+		};
+ 
+
+		var highlightStateOff = function(event) {
+
+			var state = event.target;
+
+			state.style.strokeWidth = '1px';
+			state.style.stroke = '#00b300';
+		};
+
+		var highlightTeam = function(event) {
+
+			var val = event.target.getAttribute('value');
+	
+			var tempTeam = stateData[val].team;
+
+			for( var i = 0; i < stateData.length; i++ ) {
+
+				if ( stateData[i].team === tempTeam ) {
+					statePath[i].style.strokeWidth = '3px';
+					statePath[i].style.stroke = '#33ff33';
+				}
+			}
+		};
+
+		var highlightTeamOff = function() {
+
+			for(var i = 0; i < statePath.length; i++) {
+
+				statePath[i].style.strokeWidth = '1px';
+				statePath[i].style.stroke = '#00b300';
+
+			}
+		};
+
+
 		this.setupBoard = function() {
 	
 			that.updateMessage('Setting up board...');
 	
-			$('#zoomOut').on('click', that.zoomOut);
+			$('#zoomOut').on('click', zoomOut);
 
-			that.assignDoubleClickBehavior( that.zoomToState );
 
-			that.assignHoverBehavior( that.highlightTeam, that.highlightTeamOff );
+			for(var i = 0; i < statePath.length; i++  ) {
+				statePath[i].addEventListener('dblclick', zoomToState);
+			};	
+
+
+			for(var i = 0; i < statePath.length; i++  ) {
+			
+				statePath[i].addEventListener('mouseover', highlightTeam);
+
+				statePath[i].addEventListener('mouseout', highlightTeamOff);
+			};
 			
 		};
 
@@ -483,35 +582,6 @@ $(document).ready(function() {
 			};
 		};
 
-		this.assignHoverBehavior = function(callbackHover, callbackOut) {
-
-			for(var i = 0; i < statePath.length; i++  ) {
-			
-				statePath[i].addEventListener('mouseover', function(event) {
-
-					callbackHover(event.target);			
-
-				});
-
-				statePath[i].addEventListener('mouseout', function(event) {
-
-					callbackOut(event.target);
-
-				});
-			};
-		};
-
-		this.assignDoubleClickBehavior = function(callback) {
-			
-			for(var i = 0; i < statePath.length; i++  ) {
-			
-				statePath[i].addEventListener('dblclick', function(event) {
-
-					callback(event.target);
-	
-				});
-			};	
-		};
 
 		this.printTargetInfo = function(state) {
 			console.log( 'Path info: ', state );
@@ -544,33 +614,6 @@ $(document).ready(function() {
 			console.log('refresh labels');
 		};
 
-		this.zoomToState = function(state) {
-
-			that.updateMessage('Zoom...');
-
-			var scale = 100;
-
-			var stateBBox = state.getBBox();
-
-			var newCoords = (stateBBox.x - scale) + ' ' + (stateBBox.y - scale) + ' ' + (stateBBox.width + scale*2) + ' ' + (stateBBox.height + scale*2);
-
-			svg.setAttribute('viewBox',  newCoords);
-
-			zoomed = true;
-
-			$('#zoomOut').css('display', 'inline');
-		}
-
-		this.zoomOut = function() {
-
-			console.log('zoom out');
-
-			svg.setAttribute('viewBox', initialViewBox);
-
-			zoomed = false;
-
-			$('#zoomOut').css('display', 'none');
-		}
 
 		this.assignPattern = function() {
 
@@ -583,51 +626,17 @@ $(document).ready(function() {
 			};
 		};
 			
-		this.highlightState = function(state, color) {
 
-			that.updateMessage(state.getAttribute('id') + ' selected');
 
-			state.style.strokeWidth = '.5%';
-			state.style.stroke = '#33ff33';
-		};
- 
-		this.highlightStateOff = function(state) {
-			state.style.strokeWidth = '1px';
-			state.style.stroke = '#00b300';
-		};
 
-		this.highlightTeam = function(state) {
+		var showLabel = function(event) {
 
-			var val = state.getAttribute('value');
-		
-			var tempTeam = stateData[val].team;
-
-			//console.log(tempTeam);
-
-			for(var i = 0; i < stateData.length; i++) {
-
-				if( stateData[i].team === tempTeam ) {
-					statePath[i].style.strokeWidth = '3px';
-					statePath[i].style.stroke = '#33ff33';
-				}
-			}
-
-		 }
-
-		this.highlightTeamOff = function() {
-
-			for(var i = 0; i < statePath.length; i++) {
-
-				that.highlightStateOff(statePath[i]);
-
-			}
-		};
-
-		this.showLabel = function(state) {
+			var state = event.target;
 
 			that.updateMessage(state.getAttribute('id') + ' data...');
 
 			console.log('label');
+		
 		// var text = document.createElement("TEXT");
 		// var t = document.createTextNode("test test test");
 		// text.appendChild(t);
@@ -669,7 +678,14 @@ $(document).ready(function() {
 
 					listItem.append(scoreSpan);
 
+					
+
+					//console.log(num);
+
 					$('#userStatusUl').append(listItem);
+
+					console.log('last', $('#userStatusUl').find('li').last() );
+
 
 				}
 
@@ -703,11 +719,27 @@ $(document).ready(function() {
 
 			that.updateMessage('Game loop begin');
 
-			that.removeClickBehavior(clickChoseTeam);
 
-			that.assignClickBehavior(that.showLabel);
+			for(var i = 0; i < statePath.length; i++  ) {
+			
+				statePath[i].addEventListener('mouseover', highlightState);
 
-			that.assignHoverBehavior(that.highlightState, that.highlightStateOff);
+			};
+
+			for(var i = 0; i < statePath.length; i++  ) {
+			
+				statePath[i].addEventListener('mouseout', highlightStateOff);
+
+			};
+
+			for(var i = 0; i < statePath.length; i++  ) {
+			
+				statePath[i].addEventListener('click', showLabel);
+
+			};
+
+
+
 		}
 
 	};
@@ -720,26 +752,6 @@ $(document).ready(function() {
  	newgame.assignPattern();
 
  	newgame.chooseTeam();
-
- 	newgame.updateMessage
-
-	//newgame.updateStatus();
-
- 	//newgame.highlightTeam('south');
-
-
-	$('#button-1').on('click', function() {
-
-		newgame.repositionMap('200px', '200px', '300%');
-
-	})
-
-	$('#button-2').on('click', function() {
-
-		newgame.repositionMap('200px', '200px', '300%');
-			
-	})
-
 
 
 	});
