@@ -35,6 +35,17 @@ li {
 	color: green;
 }
 
+#terminalMessageUl li:first-child {
+    background: green;
+    color: black;
+}
+
+.invert {
+	text-align: right;
+	background: green;
+    color: black;
+}
+
 p {
 	position: fixed;
 	font-size: 30px;
@@ -51,8 +62,7 @@ u {
 }
 
 #boardContainer {
-/*	position: absolute;
-*/	width: 100%;
+	width: 100%;
 	margin: 2% 2% 1% 0%; 
 	height: auto;
 }
@@ -66,11 +76,22 @@ u {
 	left: 0;*/
 }
 
-#terminalContainer {
+#zoomOut {
+	background-color: black;
+	border: solid 15px black;
 	position: fixed;
+	top: -1%;
+	left: 1%;
+	display: none;
+
+}
+
+#terminalContainer {
+	position: relative;
 	left: 0;
 	bottom: 0;
 	height: 38%;
+	min-height: 387px;
 	width: 96%;
 	margin: 3% 0% 2% 1%;
 	border: green double 5px;
@@ -89,6 +110,11 @@ u {
 	float: left;
 }
 
+#terminalMessageUl {
+	font-size: 18px;
+	float: left;
+}
+
 .userStatusLi {
 	float: left;
 	text-align: left;
@@ -97,7 +123,11 @@ u {
 
 #terminalMessages {
 	width: 55%;
-	float: right;
+
+}
+
+.termMsg {
+
 }
 
 #score {
@@ -105,3 +135,21 @@ u {
 	top: 0;
 	left: 0;
 }
+
+@keyframes blink {
+  
+  from {color: black;}
+  to {color: green;}
+
+  }
+
+.blinkingCursor {
+	font-weight: 100;
+	font-size: 20px;
+  	color: green;
+	animation: .7s blink reverse infinite;
+}
+
+
+
+

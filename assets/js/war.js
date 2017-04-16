@@ -14,7 +14,7 @@ $(document).ready(function() {
 	};
 
 
-	var game = function() {
+	var war = function() {
 
 		var board = document.getElementById('usMap');
 
@@ -352,7 +352,7 @@ $(document).ready(function() {
 						id: 'TX',
 						votes: 38,
 						neighbors: [],
-						team: 'south' ,
+						team: 'midwest' ,
 						effectivness: 1
 					},
 					{
@@ -413,46 +413,74 @@ $(document).ready(function() {
 					}
 				];
 
-		var team = 'midwest';
+		var team = null;
 
 		var zoomed = false;
 
+		var initialViewBox = svg.getAttribute('viewBox');
+
 		var that = this;
 
-		this.setupBoard = function() {
+		var clickChoseTeam = function(event) {
+
+			console.log('fired');
+
+			that.team = event.target.getAttribute('class');
+
+			that.updateMessage('Team ' + that.team + ' chosen');
+
+			that.updateStatus(that.gameLoop);
+
+		};
+
+		var clickReturnState = function(event) {
+
+			callback(event.target);
 	
-			console.log('board setup');
-	
-			//var elements = boardMap.getElementsByClassName('state');
-
-			//console.log(elements);
-
-			// elements[0].addEventListener('click', function(event) {
-			// 	console.log('state class');
-			// });
-
-			that.assignClickBehavior( that.printTargetInfo );
-
-			that.assignDoubleClickBehavior( that.zoomToState );
-
-			that.assignHoverBehavior( that.highlightState, that.highlightStateOff );
-
-			//that.refreshLabels();
-			
 		};
 
 
-		this.assignClickBehavior = function(callback) {
+		this.setupBoard = function() {
+	
+			that.updateMessage('Setting up board...');
+	
+			$('#zoomOut').on('click', that.zoomOut);
+
+			that.assignDoubleClickBehavior( that.zoomToState );
+
+			that.assignHoverBehavior( that.highlightTeam, that.highlightTeamOff );
+			
+		};
+
+		this.chooseTeam = function() {
+
+			that.updateMessage('Choose your team');
+
+			for(var i = 0; i < statePath.length; i++  ) {
+			
+				statePath[i].addEventListener('click', clickChoseTeam); 
+			
+			};
+		};
+
+		this.removeClickBehavior = function(func) {
+
+			console.log('remove');
+
+		 	for(var i = 0; i < statePath.length; i++) {
+			
+		 		statePath[i].removeEventListener('click', func);
+		 	
+		 	};
+		 };
+
+		this.assignClickBehavior = function(func) {
 			
 			for(var i = 0; i < statePath.length; i++  ) {
 			
-				statePath[i].addEventListener('click', function(event) {
+				statePath[i].addEventListener('click', func);
 
-					callback(event.target);
-	
-				});
 			};
-			
 		};
 
 		this.assignHoverBehavior = function(callbackHover, callbackOut) {
@@ -482,8 +510,7 @@ $(document).ready(function() {
 					callback(event.target);
 	
 				});
-			};
-			
+			};	
 		};
 
 		this.printTargetInfo = function(state) {
@@ -517,53 +544,9 @@ $(document).ready(function() {
 			console.log('refresh labels');
 		};
 
-		this.repositionMapManual = function(top, left, zoom) {
-
-			$('#usMap').css({'top': top, 'left': left, 'width': zoom});
-
-		};
-
-		this.repositionMapCartesianOnClick = function(state) {
-
-			var stateBox = state.getBoundingClientRect();
-			var mapBox = board.getBoundingClientRect();
-
-			//quadrant 1
-
-			if(( stateBox.x + (stateBox.width/2) < mapBox.width /2) && (stateBox.y + (stateBox.height/2) < mapBox.height /2)) {
-				
-				$('#usMap').css({'left': (((mapBox.width /2) - stateBox.x)) - (stateBox.width/2), 'top': (((mapBox.height /2) - stateBox.y)) - (stateBox.height/2)  });
-
-			}
-
-			//quadrant 2
-
-			if(( stateBox.x + (stateBox.width/2) > mapBox.width /2) && (stateBox.y + (stateBox.height/2) < mapBox.height /2))  {
-
-				$('#usMap').css({'left': (mapBox.x - (stateBox.x - (mapBox.width/2)) - (stateBox.width/2))  , 'top': (((mapBox.height /2) - stateBox.y)) - (stateBox.height/2)  });
-
-			}
-
-			//quadrant 3
-
-			if(( stateBox.x + (stateBox.width/2) > mapBox.width /2)&& (stateBox.y + (stateBox.height/2) > mapBox.height /2))  {
-				
-				$('#usMap').css({'left':  (mapBox.x - (stateBox.x - (mapBox.width/2)) - (stateBox.width/2)),  'top': (mapBox.y - (stateBox.y - mapBox.height/2) - stateBox.height/2) });
-
-			}
-
-			//quadrant 4
-
-			if(( stateBox.x + (stateBox.width/2) < mapBox.width /2) && (stateBox.y + (stateBox.height/2) > mapBox.height /2))  {
-				
-				$('#usMap').css({'left': (((mapBox.width /2) - stateBox.x)) - (stateBox.width/2), 'top': (mapBox.y - (stateBox.y - mapBox.height/2) - stateBox.height/2) });
-
-			}
-
-			//that.rescaleMap(2);
-		};
-
 		this.zoomToState = function(state) {
+
+			that.updateMessage('Zoom...');
 
 			var scale = 100;
 
@@ -572,6 +555,21 @@ $(document).ready(function() {
 			var newCoords = (stateBBox.x - scale) + ' ' + (stateBBox.y - scale) + ' ' + (stateBBox.width + scale*2) + ' ' + (stateBBox.height + scale*2);
 
 			svg.setAttribute('viewBox',  newCoords);
+
+			zoomed = true;
+
+			$('#zoomOut').css('display', 'inline');
+		}
+
+		this.zoomOut = function() {
+
+			console.log('zoom out');
+
+			svg.setAttribute('viewBox', initialViewBox);
+
+			zoomed = false;
+
+			$('#zoomOut').css('display', 'none');
 		}
 
 		this.assignPattern = function() {
@@ -583,21 +581,53 @@ $(document).ready(function() {
 				statePath[i].setAttribute('fill', pattern);
 
 			};
-
 		};
 			
 		this.highlightState = function(state, color) {
+
+			that.updateMessage(state.getAttribute('id') + ' selected');
+
 			state.style.strokeWidth = '.5%';
 			state.style.stroke = '#33ff33';
 		};
  
 		this.highlightStateOff = function(state) {
-			state.style.strokeWidth = '.1%';
+			state.style.strokeWidth = '1px';
 			state.style.stroke = '#00b300';
+		};
+
+		this.highlightTeam = function(state) {
+
+			var val = state.getAttribute('value');
+		
+			var tempTeam = stateData[val].team;
+
+			//console.log(tempTeam);
+
+			for(var i = 0; i < stateData.length; i++) {
+
+				if( stateData[i].team === tempTeam ) {
+					statePath[i].style.strokeWidth = '3px';
+					statePath[i].style.stroke = '#33ff33';
+				}
+			}
+
+		 }
+
+		this.highlightTeamOff = function() {
+
+			for(var i = 0; i < statePath.length; i++) {
+
+				that.highlightStateOff(statePath[i]);
+
+			}
 		};
 
 		this.showLabel = function(state) {
 
+			that.updateMessage(state.getAttribute('id') + ' data...');
+
+			console.log('label');
 		// var text = document.createElement("TEXT");
 		// var t = document.createTextNode("test test test");
 		// text.appendChild(t);
@@ -612,22 +642,32 @@ $(document).ready(function() {
 		//console.log('bbox: ', pRect2);
 
 		// var xCenter = pRect1.top / 2;
-		// var yCenter = pRect1.y / 2;
 		
+		// var yCenter = pRect1.y / 2;
 		//$('#score').css({'top': pRect.top + (pRect.height / 4), 'left': pRect.left + (pRect.width / 3)});
 	
 		};
 
-		this.updateStatus = function(state) {
+		this.updateStatus = function(callback) {
 			
 			for(var i = 0; i < stateData.length; i++) {
 
-				if(stateData[i].team === team && stateData[i].votes > 0 && $('#' + stateData[i].id + 'ListItem').length != true) {
+				if(stateData[i].team === that.team && stateData[i].votes > 0 && $('#' + stateData[i].id + '-ListItem').length != true) {
+					
 					console.log(stateData[i].displayName);
 
 					var listItem = $('<li>');
-					
-					listItem.text(stateData[i].displayName);
+					var scoreSpan = $('<span>');
+
+					listItem.attr('id', stateData[i].id + '-ListItem');
+					listItem.attr('data-state', stateData[i].id);
+
+					listItem.text(stateData[i].displayName + '  ');
+
+					scoreSpan.addClass('invert');
+					scoreSpan.html(stateData[i].votes);
+
+					listItem.append(scoreSpan);
 
 					$('#userStatusUl').append(listItem);
 
@@ -635,32 +675,57 @@ $(document).ready(function() {
 
 			}
 
- 			// && $('#' + stateData[i].id + 'ListItem').length === null
-			//if(state is in team 7 state votes > 0 && li doesnt exist already)
+			callback();
+
 		};
 
-		this.updateMessages = function() {
+		this.updateMessage = function(message) {
+
+			var listItem = $('<li>');
+
+			//var cursor = $('<span>');
+
+			listItem.addClass('termMsg');
+
+			//cursor.addClass('blinkingCursor');
+
+			listItem.text(message);
+			
+			//cursor.text('|');
+
+			//listItem.append(cursor);
+
+			$('#terminalMessageUl').prepend(listItem);
 
 		}
 
-		};
+		this.gameLoop = function() {
+
+			that.updateMessage('Game loop begin');
+
+			that.removeClickBehavior(clickChoseTeam);
+
+			that.assignClickBehavior(that.showLabel);
+
+			that.assignHoverBehavior(that.highlightState, that.highlightStateOff);
+		}
+
+	};
 	
-
-
-		
-
-	    //           	var heightRatio = (pRect.height*0.3) / tRect.height;
-	    //           	var textScale = Math.min(widthRatio, heightRatio);
-
  	
- 	var newgame = new game();
+ 	var newgame = new war();
 
  	newgame.setupBoard();
 
  	newgame.assignPattern();
 
- 	newgame.updateStatus();
+ 	newgame.chooseTeam();
 
+ 	newgame.updateMessage
+
+	//newgame.updateStatus();
+
+ 	//newgame.highlightTeam('south');
 
 
 	$('#button-1').on('click', function() {
