@@ -33,6 +33,7 @@ $(document).ready(function() {
 						votes: 9,
 						neighbors: [],
 						team: 'south',
+						neighbors: ['MS','FL','GA','TN'],  
 						effectivness: 1
 					},
 					{
@@ -41,13 +42,14 @@ $(document).ready(function() {
 						votes: 6,
 						neighbors: [],
 						team: 'south',
+						neighbors: ['LA', 'MS', 'TX', 'OK', 'TN', 'MO'].
 						effectivness: 1
 					},
 					{
 						displayName: 'Arizona',						
 						id: 'AZ',
 						votes: 11,
-						neighbors: [],
+						neighbors: ['NM', 'CO', 'UT', 'NV', 'CA'],
 						team: 'west',
 						effectivness: 1
 					},
@@ -55,7 +57,7 @@ $(document).ready(function() {
 						displayName: 'California',						
 						id: 'CA',
 						votes: 55,
-						neighbors: [],
+						neighbors: ['AZ', 'NV', 'OR'],
 						team: 'west',
 						effectivness: 1
 					},
@@ -63,7 +65,7 @@ $(document).ready(function() {
 						displayName: 'Colorado',
 						id: 'CO',						
 						votes: 9,
-						neighbors: [],
+						neighbors: ['OK', 'KS','NE','WY', 'UT', 'AZ', 'NM'],
 						team: 'west',
 						effectivness: 1
 					},
@@ -71,7 +73,7 @@ $(document).ready(function() {
 						displayName: 'Connecticut',	
 						id: 'CT',				
 						votes: 7,
-						neighbors: [],
+						neighbors: ['RI', 'MA', 'NY'],
 						team: 'east',
 						effectivness: 1
 					},
@@ -79,7 +81,7 @@ $(document).ready(function() {
 						displayName: 'Delaware',
 						id: 'DE',					
 						votes: 3,
-						neighbors: [],
+						neighbors: ['NJ', 'PA', 'MD'],
 						team: 'east',
 						effectivness: 1
 					},
@@ -87,7 +89,7 @@ $(document).ready(function() {
 						displayName: 'Florida',
 						id: 'FL',					
 						votes: 29,
-						neighbors: [],
+						neighbors: ['GA', 'AL'],
 						team: 'south',
 						effectivness: 1
 					},
@@ -95,7 +97,7 @@ $(document).ready(function() {
 						displayName: 'Georgia',
 						id: 'GA',						
 						votes: 16,
-						neighbors: [],
+						neighbors: ['SC','NC','TN','AL','FL'],
 						team: 'south',
 						effectivness: 1
 					},
@@ -103,7 +105,7 @@ $(document).ready(function() {
 						displayName: 'Iowa',
 						id: 'IA',						
 						votes: 6,
-						neighbors: [],
+						neighbors: ['IL', 'WI', 'MN', 'SD', 'NE', 'KS', 'MO'],
 						team: 'midwest',
 						effectivness: 1
 					},
@@ -111,7 +113,7 @@ $(document).ready(function() {
 						displayName: 'Idaho',
 						id: 'ID',
 						votes: 4,
-						neighbors: [],
+						neighbors: ['WY', 'MT', 'WA', 'OR', 'NV', 'UT'],
 						team: 'west',
 						effectivness: 1
 					},
@@ -119,7 +121,7 @@ $(document).ready(function() {
 						displayName: 'Illinois',
 						id: 'IL',
 						votes: 20,
-						neighbors: [],
+						neighbors: ['WI', 'IA', 'MO', 'KY', 'IN'],
 						team: 'midwest',
 						effectivness: 1
 					},
@@ -127,7 +129,7 @@ $(document).ready(function() {
 						displayName: 'Indiana',
 						id: 'IN',
 						votes: 11,
-						neighbors: [],
+						neighbors: ['KY','OH','MI','IL'],
 						team: 'midwest',
 						effectivness: 1
 					},
@@ -143,7 +145,7 @@ $(document).ready(function() {
 						displayName: 'Kentucky',
 						id: 'KY',
 						votes: 8,
-						neighbors: [],
+						neighbors: ['MO','NE','CO','OK'],
 						team: 'south',
 						effectivness: 1
 					},
@@ -151,7 +153,7 @@ $(document).ready(function() {
 						displayName: 'Louisiana',
 						id: 'LA',
 						votes: 8,
-						neighbors: [],
+						neighbors: ['MS', 'AR', 'TX'],
 						team: 'south',
 						effectivness: 1
 					},
@@ -159,7 +161,7 @@ $(document).ready(function() {
 						displayName: 'Massachusetts',
 						id: 'MA',
 						votes: 11,
-						neighbors: [],
+						neighbors: ['NH','VT','NY','CT','RI'],
 						team: 'east',
 						effectivness: 1
 					},
@@ -167,7 +169,7 @@ $(document).ready(function() {
 						displayName: 'Maryland',
 						id: 'MD',
 						votes: 10,
-						neighbors: [],
+						neighbors: ['DE','PA','WV','VA'],
 						team: 'east' ,
 						effectivness: 1
 					},
@@ -175,7 +177,7 @@ $(document).ready(function() {
 						displayName: 'Maine',
 						id: 'ME',
 						votes: 4,
-						neighbors: [],
+						neighbors: ['NH'],
 						team: 'east',
 						effectivness: 1
 					},
@@ -183,7 +185,7 @@ $(document).ready(function() {
 						displayName: 'Michigan',
 						id: 'MI',
 						votes: 16,
-						neighbors: [],
+						neighbors: ['OH', 'IN', 'WI'],
 						team: 'midwest',
 						effectivness: 1
 					},
@@ -191,7 +193,7 @@ $(document).ready(function() {
 						displayName: 'Minnesota',
 						id: 'MN',
 						votes: 10,
-						neighbors: [],
+						neighbors: ['WI','IA','NE','SD','ND'],
 						team: 'midwest' ,
 						effectivness: 1
 					},
@@ -199,7 +201,7 @@ $(document).ready(function() {
 						displayName: 'Missouri',
 						id: 'MO',
 						votes: 10,
-						neighbors: [],
+						neighbors: ['AR','TN','KY','IL','IA','NE','KS','OK','AR'],
 						team: 'midwest',
 						effectivness: 1
 					},
@@ -207,7 +209,7 @@ $(document).ready(function() {
 						displayName: 'Mississippi',
 						id: 'MS',
 						votes: 6,
-						neighbors: [],
+						neighbors: ['AL','TN','AR','LA'],
 						team: 'south' ,
 						effectivness: 1
 					},
@@ -215,7 +217,7 @@ $(document).ready(function() {
 						displayName: 'Montana',
 						id: 'MN',
 						votes: 3,
-						neighbors: [],
+						neighbors: ['ND','SD','WY','ID'],
 						team: 'west',
 						effectivness: 1
 					},
@@ -223,7 +225,7 @@ $(document).ready(function() {
 						displayName: 'North Carolina',
 						id: 'NC',
 						votes: 15,
-						neighbors: [],
+						neighbors: ['VA','TN','GA','SC'],
 						team: 'south' ,
 						effectivness: 1
 					},
@@ -231,7 +233,7 @@ $(document).ready(function() {
 						displayName: 'North Dakota',
 						id: 'ND',
 						votes: 3,
-						neighbors: [],
+						neighbors: ['MN', 'SD', 'MT'],
 						team: 'midwest' ,
 						effectivness: 1
 					},
@@ -239,7 +241,7 @@ $(document).ready(function() {
 						displayName: 'Nebraska',
 						id: 'NE',
 						votes: 5,
-						neighbors: [],
+						neighbors: ['MO', 'IA', 'SD', 'WY', 'CO', 'KS'],
 						team: 'midwest',
 						effectivness: 1
 					},
@@ -247,7 +249,7 @@ $(document).ready(function() {
 						displayName: 'New Hampshire',
 						id: 'NH',
 						votes: 4,
-						neighbors: [],
+						neighbors: ['ME', 'VT', 'MA'],
 						team: 'east',
 						effectivness: 1
 					},
@@ -255,7 +257,7 @@ $(document).ready(function() {
 						displayName: 'New Jersey',
 						id: 'NJ',
 						votes: 14,
-						neighbors: [],
+						neighbors: ['NY', 'PA', 'DE'],
 						team: 'east' ,
 						effectivness: 1
 					},
@@ -263,7 +265,7 @@ $(document).ready(function() {
 						displayName: 'New Mexico',
 						id: 'NM',
 						votes: 5,
-						neighbors: [],
+						neighbors: ['TX','OK','CO','UT','AZ'],
 						team: 'west',
 						effectivness: 1
 					},
@@ -271,7 +273,7 @@ $(document).ready(function() {
 						displayName: 'Nevada',
 						id: 'NV',
 						votes: 6,
-						neighbors: [],
+						neighbors: ['ID', 'OR', 'CA', 'AZ', 'UT'],
 						team: 'west' ,
 						effectivness: 1
 					},
@@ -279,7 +281,7 @@ $(document).ready(function() {
 						displayName: 'New York',
 						id: 'NY',
 						votes: 29,
-						neighbors: [],
+						neighbors: ['CT', 'MA', 'VT', 'PA', 'NJ'],
 						team: 'east',
 						effectivness: 1
 					},
@@ -287,7 +289,7 @@ $(document).ready(function() {
 						displayName: 'Ohio',
 						id: 'OH',
 						votes: 18,
-						neighbors: [],
+						neighbors: ['PA', 'WV', 'KY', 'IN', 'MI'],
 						team: 'midwest',
 						effectivness: 1
 					},
@@ -295,7 +297,7 @@ $(document).ready(function() {
 						displayName: 'Oklahoma',
 						id: 'OK',
 						votes: 7,
-						neighbors: [],
+						neighbors: ['AR', 'MO', 'KS', 'CO', 'NM', 'TX'],
 						team: 'midwest',
 						effectivness: 1
 					},
@@ -303,7 +305,7 @@ $(document).ready(function() {
 						displayName: 'Oregon',
 						id: 'OR',
 						votes: 7,
-						neighbors: [],
+						neighbors: ['CA','NV','ID','WA'],
 						team: 'west',
 						effectivness: 1
 					},
@@ -311,7 +313,7 @@ $(document).ready(function() {
 						displayName: 'Pennsylvania',
 						id: 'PA',
 						votes: 20,
-						neighbors: [],
+						neighbors: ['NY','NJ','MD','WV','OH'],
 						team: 'east',
 						effectivness: 1
 					},
@@ -319,7 +321,7 @@ $(document).ready(function() {
 						displayName: 'Rhode Island',
 						id: 'RI',
 						votes: 4,
-						neighbors: [],
+						neighbors: ['CT','MA'],
 						team: 'east',
 						effectivness: 1
 					},
@@ -327,7 +329,7 @@ $(document).ready(function() {
 						displayName: 'South Carolina',
 						id: 'SC',
 						votes: 9,
-						neighbors: [],
+						neighbors: ['NC','GA'],
 						team: 'south' ,
 						effectivness: 1
 					},
@@ -335,7 +337,7 @@ $(document).ready(function() {
 						displayName: 'South Dakota',
 						id: 'SD',
 						votes: 3,
-						neighbors: [],
+						neighbors: ['MN','IA','NE','WY','MT','ND'],
 						team: 'midwest',
 						effectivness: 1
 					},
@@ -343,7 +345,7 @@ $(document).ready(function() {
 						displayName: 'Tennesse',
 						id: 'TN',
 						votes: 11,
-						neighbors: [],
+						neighbors: ['GA','NC','VA','KY','MO','AR','MS','AL'],
 						team: 'south' ,
 						effectivness: 1
 					},
@@ -351,7 +353,7 @@ $(document).ready(function() {
 						displayName: 'Texas',
 						id: 'TX',
 						votes: 38,
-						neighbors: [],
+						neighbors: ['LA','AR','OK','NM'],
 						team: 'midwest' ,
 						effectivness: 1
 					},
@@ -359,7 +361,7 @@ $(document).ready(function() {
 						displayName: 'Utah',
 						id: 'UT',
 						votes: 6,
-						neighbors: [],
+						neighbors: ['NM','CO','WY','ID','NV','AZ'],
 						team: 'west',
 						effectivness: 1
 					},
@@ -367,7 +369,7 @@ $(document).ready(function() {
 						displayName: 'Virgina',
 						id: 'VA',
 						votes: 13,
-						neighbors: [],
+						neighbors: ['NC','TN','KY','WV','MD'],
 						team: 'south',
 						effectivness: 1
 					},
@@ -375,7 +377,7 @@ $(document).ready(function() {
 						displayName: 'Vermont',
 						id: 'VT',
 						votes: 3,
-						neighbors: [],
+						neighbors: ['NH','MA','NY'],
 						team: 'east',
 						effectivness: 1
 					},
@@ -383,7 +385,7 @@ $(document).ready(function() {
 						displayName: 'Washington',
 						id: 'WA',
 						votes: 12,
-						neighbors: [],
+						neighbors: ['ID', 'OR'],
 						team: 'west',
 						effectivness: 1
 					},
@@ -391,7 +393,7 @@ $(document).ready(function() {
 						displayName: 'Wisconsin',
 						id: 'WI',
 						votes: 10,
-						neighbors: [],
+						neighbors: ['IL','IA','MN', 'MI'],
 						team: 'midwest',
 						effectivness: 1
 					},
@@ -399,7 +401,7 @@ $(document).ready(function() {
 						displayName: 'West Virgina',
 						id: 'WV',
 						votes: 5,
-						neighbors: [],
+						neighbors: ['MD','PA','OH','KY','VA'],
 						team: 'south',
 						effectivness: 1
 					},
@@ -407,7 +409,7 @@ $(document).ready(function() {
 						displayName: 'Wyoming',
 						id: 'WY',
 						votes: 3,
-						neighbors: [],
+						neighbors: ['SD','NE','CO','UT','ID','MT'],
 						team: 'west',
 						effectivness: 1
 					}
