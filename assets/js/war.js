@@ -500,19 +500,16 @@ $(document).ready(function() {
 			$('#zoomOut').css('display', 'none');
 		}
 
-
 		var clickReturnState = function(event) {
 
 			callback(event.target);	
 		};
-
 
 		var getNeighbors = function(event) {
 
 			var index = event.target.getAttribute('value');
 
 			return stateData[index].neighbors;
-
 		}
 
 		var isNeighbor = function(event) {
@@ -526,7 +523,6 @@ $(document).ready(function() {
 				return true;
 			
 			} else return false;
-
 		}
 
 		var isOnTeam = function(event) {
@@ -538,7 +534,6 @@ $(document).ready(function() {
 				return true;
 
 			} else return false;
-
 		}
 
 		var highlightStateFill = function(event) {
@@ -547,7 +542,6 @@ $(document).ready(function() {
 
 			state.style.fill = '#33ff33';
 			state.style.fillOpacity = '.3';
-
 		}
 
 		var highlightStateFillOff = function(event) {
@@ -562,7 +556,6 @@ $(document).ready(function() {
 
 			state.style.fillOpacity = '1';
 			state.style.fill = pattern;
-
 		};
 
 		var highlightState = function(event) {
@@ -583,7 +576,6 @@ $(document).ready(function() {
 				state.style.stroke = '#33ff33';
 
  			}
-
  		}
 
 		var highlightStateOff = function(event) {
@@ -593,7 +585,6 @@ $(document).ready(function() {
 			state.style.strokeWidth = '1px';
 			state.style.stroke = '#00b300';
 		};
-
 		
 		var highlightTeam = function(event) {
 
@@ -610,7 +601,6 @@ $(document).ready(function() {
 			}
 		};
 
-
 		var highlightAllOff = function() {
 
 			for(var i = 0; i < statePath.length; i++) {
@@ -620,7 +610,6 @@ $(document).ready(function() {
 
 			}
 		};
-
 
 		var highlightNeighbors = function() {
 
@@ -643,9 +632,7 @@ $(document).ready(function() {
 
 			state2.style.strokeWidth = '5px';
 			state2.style.stroke = '#33ff33';
-
 		}
-
 
 		var removeEvent = function(event, func) {
 
@@ -665,8 +652,7 @@ $(document).ready(function() {
 			};
 		};
 
-
-		this.printTargetInfo = function(state) {
+		var printTargetInfo = function(state) {
 
 			console.log( 'Path info: ', state );
 			console.log( 'Bounding Rectangle: ', state.getBoundingClientRect() );
@@ -685,7 +671,6 @@ $(document).ready(function() {
 			};
 		};
 			
-
 		var showStateInfo = function(event) {
 
 			var state = stateData[ event.target.getAttribute('value') ];
@@ -707,7 +692,6 @@ $(document).ready(function() {
 			//console.log(getNeighbors(event));
 
 			//console.log(isOnTeam(event));
-
 		};
 
 		var showPlayerTeamStatus = function() {
@@ -776,10 +760,7 @@ $(document).ready(function() {
 			userUl.append( $('<li>').html('Votes remaining: ' + targetState.votes) );
 		
 			userUl.append( $('<li>'). html('-------------------'));
-
 		}
-
-
 
 		var updateMessage = function(message) {
 
@@ -967,7 +948,6 @@ $(document).ready(function() {
 			updateMessage(currentState.displayName + ' attacks ' + stateData[event.target.getAttribute('value')].displayName + '!');
 
 			battle(stateData[event.target.getAttribute('value')], currentState);
-
 		}
 
 		var computerAttack = function() {
@@ -1049,14 +1029,10 @@ $(document).ready(function() {
 			}
 
 			console.log(targetState.votes, playerState.votes);
-
 		};
 
-		var gameOver = function() {
-		
+		var gameOver = function() {		
 		};
-
-
 
 
 		setupBoard(chooseTeam);

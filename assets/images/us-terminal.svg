@@ -8,7 +8,6 @@
 
 <defs>
 	 
-
 	// vert lines	 
 	<pattern id="midwest" width="7" height="7" patternUnits="userSpaceOnUse">  
     	<rect id="westRect" fill="#00b300" x="0" y="0" width=".5" height="3"></rect>     
@@ -36,7 +35,7 @@
 
 <g id="outlines">
 
-	<path id="AL" class="south" value="0" stroke="#00b300" stroke-miterlimit="10" d="M628.5,466.4l0.6,0.199l1.301-2.699l1.5-4.4l2.3,0.6l3.1,6v1l-2.7,1.9
+	<path id="AL" class="south" value="0" stroke="#00e600" stroke-miterlimit="10" d="M628.5,466.4l0.6,0.199l1.301-2.699l1.5-4.4l2.3,0.6l3.1,6v1l-2.7,1.9
 		l2.7,0.3l5.2-2.5l-0.3-7.6l-2.5-1.8l-2-2l0.399-4l10.5-1.5l25.7-2.9l6.7-0.6l5.6,0.1l-0.5-2.2l-1.5-0.8l-0.899-1.1l1-2.601
 		l-0.4-5.2l-1.6-4.5l0.8-5.1l1.7-4.8l-0.2-1.7l-1.8-0.7l-0.5-3.6l-2.7-3.4l-2-6.5l-1.4-6.7l-1.8-5l-3.8-16l-3.5-7.899l-0.8-5.601
 		l0.1-2.199l-9,0.8l-23.399,2.2l-12.2,0.8L622,371.1l0.2,16.7l-0.7,31l-0.3,14.101l2.8,18.8l1.6,14.7H628.5z"/>

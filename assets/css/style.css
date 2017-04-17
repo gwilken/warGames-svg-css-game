@@ -2,18 +2,6 @@ body {
 	background-color: black;
 }
 
-h1 {
-/*	font-family:;
-*/}
-
-h2 {
-
-}
-
-h3 {
-
-}
-
 h4 {
 	margin: 6% 0 6% 0;
 	position: relative;
@@ -28,7 +16,6 @@ ul {
 }
 
 li {
-
 	position: relative;
 	text-align: left;
 	font-size: 14px;
@@ -123,7 +110,7 @@ u {
 #terminalMessageUl {
 	font-size: 18px;
 	float: left;
-	margin: 0 0 0 0;
+	margin: 0 6% 0 0;
 }
 
 .userStatusLi {
