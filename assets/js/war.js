@@ -30,6 +30,7 @@ $(document).ready(function() {
 					{
 						displayName: 'Alabama',
 						id: 'AL',
+						index: 0,
 						votes: 9,
 						team: 'south',
 						neighbors: ['MS','FL','GA','TN'],  
@@ -38,6 +39,7 @@ $(document).ready(function() {
 					{
 						displayName: 'Arkansas',						
 						id: 'AR',
+						index: 1,
 						votes: 6,
 						team: 'south',
 						neighbors: ['LA', 'MS', 'TX', 'OK', 'TN', 'MO'],
@@ -46,6 +48,7 @@ $(document).ready(function() {
 					{
 						displayName: 'Arizona',						
 						id: 'AZ',
+						index: 2,
 						votes: 11,
 						neighbors: ['NM', 'CO', 'UT', 'NV', 'CA'],
 						team: 'west',
@@ -54,6 +57,7 @@ $(document).ready(function() {
 					{
 						displayName: 'California',						
 						id: 'CA',
+						index: 3,
 						votes: 55,
 						neighbors: ['AZ', 'NV', 'OR'],
 						team: 'west',
@@ -62,6 +66,7 @@ $(document).ready(function() {
 					{
 						displayName: 'Colorado',
 						id: 'CO',						
+						index: 4,
 						votes: 9,
 						neighbors: ['OK', 'KS','NE','WY', 'UT', 'AZ', 'NM'],
 						team: 'west',
@@ -70,6 +75,7 @@ $(document).ready(function() {
 					{
 						displayName: 'Connecticut',	
 						id: 'CT',				
+						index: 5,
 						votes: 7,
 						neighbors: ['RI', 'MA', 'NY'],
 						team: 'east',
@@ -78,6 +84,7 @@ $(document).ready(function() {
 					{
 						displayName: 'Delaware',
 						id: 'DE',					
+						index: 6,
 						votes: 3,
 						neighbors: ['NJ', 'PA', 'MD'],
 						team: 'east',
@@ -86,6 +93,7 @@ $(document).ready(function() {
 					{
 						displayName: 'Florida',
 						id: 'FL',					
+						index: 7,
 						votes: 29,
 						neighbors: ['GA', 'AL'],
 						team: 'south',
@@ -94,6 +102,7 @@ $(document).ready(function() {
 					{
 						displayName: 'Georgia',
 						id: 'GA',						
+						index: 8,
 						votes: 16,
 						neighbors: ['SC','NC','TN','AL','FL'],
 						team: 'south',
@@ -102,6 +111,7 @@ $(document).ready(function() {
 					{
 						displayName: 'Iowa',
 						id: 'IA',						
+						index: 9,
 						votes: 6,
 						neighbors: ['IL', 'WI', 'MN', 'SD', 'NE', 'KS', 'MO'],
 						team: 'midwest',
@@ -110,6 +120,7 @@ $(document).ready(function() {
 					{
 						displayName: 'Idaho',
 						id: 'ID',
+						index: 10,
 						votes: 4,
 						neighbors: ['WY', 'MT', 'WA', 'OR', 'NV', 'UT'],
 						team: 'west',
@@ -118,6 +129,7 @@ $(document).ready(function() {
 					{
 						displayName: 'Illinois',
 						id: 'IL',
+						index: 11,
 						votes: 20,
 						neighbors: ['WI', 'IA', 'MO', 'KY', 'IN'],
 						team: 'midwest',
@@ -126,6 +138,7 @@ $(document).ready(function() {
 					{
 						displayName: 'Indiana',
 						id: 'IN',
+						index: 12,
 						votes: 11,
 						neighbors: ['KY','OH','MI','IL'],
 						team: 'midwest',
@@ -134,6 +147,7 @@ $(document).ready(function() {
 					{
 						displayName: 'Kansas',
 						id: 'KS',
+						index: 13,
 						votes: 6,
 						neighbors: ['AR','MO','NE','CO','OK'],
 						team: 'midwest',
@@ -142,6 +156,7 @@ $(document).ready(function() {
 					{
 						displayName: 'Kentucky',
 						id: 'KY',
+						index: 14,
 						votes: 8,
 						neighbors: ['MO','TN','VA','WV', 'OH', 'IN', 'IL'],
 						team: 'south',
@@ -150,6 +165,7 @@ $(document).ready(function() {
 					{
 						displayName: 'Louisiana',
 						id: 'LA',
+						index: 15,
 						votes: 8,
 						neighbors: ['MS', 'AR', 'TX'],
 						team: 'south',
@@ -158,6 +174,7 @@ $(document).ready(function() {
 					{
 						displayName: 'Massachusetts',
 						id: 'MA',
+						index: 16,
 						votes: 11,
 						neighbors: ['NH','VT','NY','CT','RI'],
 						team: 'east',
@@ -166,6 +183,7 @@ $(document).ready(function() {
 					{
 						displayName: 'Maryland',
 						id: 'MD',
+						index: 17,
 						votes: 10,
 						neighbors: ['DE','PA','WV','VA'],
 						team: 'east' ,
@@ -174,6 +192,7 @@ $(document).ready(function() {
 					{
 						displayName: 'Maine',
 						id: 'ME',
+						index: 18,
 						votes: 4,
 						neighbors: ['NH'],
 						team: 'east',
@@ -182,6 +201,7 @@ $(document).ready(function() {
 					{
 						displayName: 'Michigan',
 						id: 'MI',
+						index: 19,
 						votes: 16,
 						neighbors: ['OH', 'IN', 'WI'],
 						team: 'midwest',
@@ -190,6 +210,7 @@ $(document).ready(function() {
 					{
 						displayName: 'Minnesota',
 						id: 'MN',
+						index: 20,
 						votes: 10,
 						neighbors: ['WI','IA','NE','SD','ND'],
 						team: 'midwest' ,
@@ -198,6 +219,7 @@ $(document).ready(function() {
 					{
 						displayName: 'Missouri',
 						id: 'MO',
+						index: 21,
 						votes: 10,
 						neighbors: ['AR','TN','KY','IL','IA','NE','KS','OK','AR'],
 						team: 'midwest',
@@ -206,6 +228,7 @@ $(document).ready(function() {
 					{
 						displayName: 'Mississippi',
 						id: 'MS',
+						index: 22,
 						votes: 6,
 						neighbors: ['AL','TN','AR','LA'],
 						team: 'south' ,
@@ -214,6 +237,7 @@ $(document).ready(function() {
 					{
 						displayName: 'Montana',
 						id: 'MN',
+						index: 23,
 						votes: 3,
 						neighbors: ['ND','SD','WY','ID'],
 						team: 'west',
@@ -222,6 +246,7 @@ $(document).ready(function() {
 					{
 						displayName: 'North Carolina',
 						id: 'NC',
+						index: 24,
 						votes: 15,
 						neighbors: ['VA','TN','GA','SC'],
 						team: 'south' ,
@@ -230,6 +255,7 @@ $(document).ready(function() {
 					{
 						displayName: 'North Dakota',
 						id: 'ND',
+						index: 25,
 						votes: 3,
 						neighbors: ['MN', 'SD', 'MT'],
 						team: 'midwest' ,
@@ -238,6 +264,7 @@ $(document).ready(function() {
 					{
 						displayName: 'Nebraska',
 						id: 'NE',
+						index: 26,
 						votes: 5,
 						neighbors: ['MO', 'IA', 'SD', 'WY', 'CO', 'KS'],
 						team: 'midwest',
@@ -246,6 +273,7 @@ $(document).ready(function() {
 					{
 						displayName: 'New Hampshire',
 						id: 'NH',
+						index: 27,
 						votes: 4,
 						neighbors: ['ME', 'VT', 'MA'],
 						team: 'east',
@@ -254,6 +282,7 @@ $(document).ready(function() {
 					{
 						displayName: 'New Jersey',
 						id: 'NJ',
+						index: 28,
 						votes: 14,
 						neighbors: ['NY', 'PA', 'DE'],
 						team: 'east' ,
@@ -262,6 +291,7 @@ $(document).ready(function() {
 					{
 						displayName: 'New Mexico',
 						id: 'NM',
+						index: 29,
 						votes: 5,
 						neighbors: ['TX','OK','CO','UT','AZ'],
 						team: 'west',
@@ -270,6 +300,7 @@ $(document).ready(function() {
 					{
 						displayName: 'Nevada',
 						id: 'NV',
+						index: 30,
 						votes: 6,
 						neighbors: ['ID', 'OR', 'CA', 'AZ', 'UT'],
 						team: 'west' ,
@@ -278,6 +309,7 @@ $(document).ready(function() {
 					{
 						displayName: 'New York',
 						id: 'NY',
+						index: 31,
 						votes: 29,
 						neighbors: ['CT', 'MA', 'VT', 'PA', 'NJ'],
 						team: 'east',
@@ -286,6 +318,7 @@ $(document).ready(function() {
 					{
 						displayName: 'Ohio',
 						id: 'OH',
+						index: 32,
 						votes: 18,
 						neighbors: ['PA', 'WV', 'KY', 'IN', 'MI'],
 						team: 'midwest',
@@ -294,6 +327,7 @@ $(document).ready(function() {
 					{
 						displayName: 'Oklahoma',
 						id: 'OK',
+						index: 33,
 						votes: 7,
 						neighbors: ['AR', 'MO', 'KS', 'CO', 'NM', 'TX'],
 						team: 'midwest',
@@ -302,6 +336,7 @@ $(document).ready(function() {
 					{
 						displayName: 'Oregon',
 						id: 'OR',
+						index: 34,
 						votes: 7,
 						neighbors: ['CA','NV','ID','WA'],
 						team: 'west',
@@ -310,6 +345,7 @@ $(document).ready(function() {
 					{
 						displayName: 'Pennsylvania',
 						id: 'PA',
+						index: 35,
 						votes: 20,
 						neighbors: ['NY','NJ','MD','WV','OH'],
 						team: 'east',
@@ -318,6 +354,7 @@ $(document).ready(function() {
 					{
 						displayName: 'Rhode Island',
 						id: 'RI',
+						index: 36,
 						votes: 4,
 						neighbors: ['CT','MA'],
 						team: 'east',
@@ -326,6 +363,7 @@ $(document).ready(function() {
 					{
 						displayName: 'South Carolina',
 						id: 'SC',
+						index: 37,
 						votes: 9,
 						neighbors: ['NC','GA'],
 						team: 'south' ,
@@ -334,6 +372,7 @@ $(document).ready(function() {
 					{
 						displayName: 'South Dakota',
 						id: 'SD',
+						index: 38,
 						votes: 3,
 						neighbors: ['MN','IA','NE','WY','MT','ND'],
 						team: 'midwest',
@@ -342,6 +381,7 @@ $(document).ready(function() {
 					{
 						displayName: 'Tennesse',
 						id: 'TN',
+						index: 39,
 						votes: 11,
 						neighbors: ['GA','NC','VA','KY','MO','AR','MS','AL'],
 						team: 'south' ,
@@ -350,6 +390,7 @@ $(document).ready(function() {
 					{
 						displayName: 'Texas',
 						id: 'TX',
+						index: 40,
 						votes: 38,
 						neighbors: ['LA','AR','OK','NM'],
 						team: 'midwest' ,
@@ -358,6 +399,7 @@ $(document).ready(function() {
 					{
 						displayName: 'Utah',
 						id: 'UT',
+						index: 41,
 						votes: 6,
 						neighbors: ['NM','CO','WY','ID','NV','AZ'],
 						team: 'west',
@@ -366,6 +408,7 @@ $(document).ready(function() {
 					{
 						displayName: 'Virgina',
 						id: 'VA',
+						index: 42,
 						votes: 13,
 						neighbors: ['NC','TN','KY','WV','MD'],
 						team: 'south',
@@ -374,6 +417,7 @@ $(document).ready(function() {
 					{
 						displayName: 'Vermont',
 						id: 'VT',
+						index: 43,
 						votes: 3,
 						neighbors: ['NH','MA','NY'],
 						team: 'east',
@@ -382,6 +426,7 @@ $(document).ready(function() {
 					{
 						displayName: 'Washington',
 						id: 'WA',
+						index: 44,
 						votes: 12,
 						neighbors: ['ID', 'OR'],
 						team: 'west',
@@ -390,6 +435,7 @@ $(document).ready(function() {
 					{
 						displayName: 'Wisconsin',
 						id: 'WI',
+						index: 45,
 						votes: 10,
 						neighbors: ['IL','IA','MN', 'MI'],
 						team: 'midwest',
@@ -398,6 +444,7 @@ $(document).ready(function() {
 					{
 						displayName: 'West Virgina',
 						id: 'WV',
+						index: 46,
 						votes: 5,
 						neighbors: ['MD','PA','OH','KY','VA'],
 						team: 'south',
@@ -406,6 +453,7 @@ $(document).ready(function() {
 					{
 						displayName: 'Wyoming',
 						id: 'WY',
+						index: 47,
 						votes: 3,
 						neighbors: ['SD','NE','CO','UT','ID','MT'],
 						team: 'west',
@@ -430,13 +478,11 @@ $(document).ready(function() {
 		var that = this;
 
 
-
-
 		var zoomToState = function(event) {
 
 			var state = event.target;
 
-			that.updateMessage('Zoom...');
+			updateMessage('Zoom...');
 
 			var scale = 100;
 
@@ -467,16 +513,6 @@ $(document).ready(function() {
 
 			callback(event.target);	
 		};
-
-
-		var areNeighbors = function(state1, state2) {
-
-			if(state1.neighbors.includes(state2.id)) {
-
-				return true;
-			
-			} else return false;
-		}
 
 
 		var getNeighbors = function(event) {
@@ -582,7 +618,6 @@ $(document).ready(function() {
 		};
 
 
-
 		var highlightNeighbors = function() {
 
 			for(var i = 0; i < statePath.length; i ++) {
@@ -597,6 +632,15 @@ $(document).ready(function() {
 			}
 		}
 
+		var highlightPair = function(state1, state2) {
+
+			state1.style.strokeWidth = '4px';
+			state1.style.stroke = '#33ff33';
+
+			state2.style.strokeWidth = '4px';
+			state2.style.stroke = '#33ff33';
+
+		}
 
 
 		var removeEvent = function(event, func) {
@@ -626,29 +670,6 @@ $(document).ready(function() {
 			console.log( 'Current viewBox of SVG: ', svg.getAttribute('viewBox'));
 		}
 
-		this.createLabel = function() {
-
-			for(var i = 0; i < stateData.length; i++) {
-
-				var box = statePath[i].getBoundingClientRect();
-
-				var label = $('<h4>');
-
-				label.css({'top': box.top + (box.height / 4), 'left': box.left + (box.width / 3)});
-			 
-			 	label.html(stateData[i].displayName);
-
-			 	$('#boardContainer').append(label);
-		 	
-		 	};
-		};
-
-		this.refreshLabel = function() {
-			
-			console.log('refresh labels');
-		};
-
-
 		var assignPattern = function() {
 
 			for( var i = 0; i < statePath.length; i++  ) {
@@ -665,23 +686,23 @@ $(document).ready(function() {
 
 			var state = stateData[ event.target.getAttribute('value') ];
 
-			
-			that.updateMessage('-----------');
+	
+			updateMessage('-----------');
 		
-			that.updateMessage('TEAM: ' + state.team.toUpperCase());
+			updateMessage('TEAM: ' + state.team.toUpperCase());
 
-			that.updateMessage('-----------');
+			updateMessage('-----------');
 
-			that.updateMessage('VOTES LEFT: ' + state.votes);
+			updateMessage('VOTES LEFT: ' + state.votes);
 
-			that.updateMessage('-----------');
+			updateMessage('-----------');
 
-			that.updateMessage(state.displayName);
+			updateMessage(state.displayName);
 
 
-			console.log(getNeighbors(event));
+			//console.log(getNeighbors(event));
 
-			console.log(isOnTeam(event));
+			//console.log(isOnTeam(event));
 
 		};
 
@@ -724,12 +745,9 @@ $(document).ready(function() {
 			userUl.append( $('<li>').html('Effectiveness: ' + state.effectivness) );
 		
 			userUl.append( $('<li>'). html('-------------------'));
-			
-	//		userUl.append( $('<li>').html('Neighbors: ' + state.neighbors) );
-
 		}
 
-		this.updateMessage = function(message) {
+		var updateMessage = function(message) {
 
 			var listItem = $('<li>');
 
@@ -748,11 +766,14 @@ $(document).ready(function() {
 			terminalList.prepend(listItem);
 		};
 
+		var clearMessages = function() {
 
+			$('#terminalMessageUl').empty();	
+		}
 
 		var setupBoard = function(callback) {
 	
-			that.updateMessage('Setting up board');
+			updateMessage('Setting up board');
 			
 			if(!boardReady) {
 			
@@ -764,18 +785,16 @@ $(document).ready(function() {
 
 				boardReady = true;
 				
-				that.updateMessage('Board ready');
+				updateMessage('Board ready');
 
 				callback();
 			
 			 } 
-
 		};
-
 
 		var chooseTeam = function() {
 
-			that.updateMessage('Choose your team');
+			updateMessage('Choose your team');
 
 			if( team === null ) {
 
@@ -789,7 +808,7 @@ $(document).ready(function() {
 
 					console.log('inside choose team', team);
 
-					that.updateMessage('Team ' + team + ' chosen');
+					updateMessage('Team ' + team + ' chosen');
 
 					var teamHeadline = $('<u>').html('TEAM ' + team.toUpperCase());
 
@@ -810,14 +829,12 @@ $(document).ready(function() {
 				assignEvent('click', tempFunc);
 
 			};
-
 		};
-
 
 		var choosePlayerState = function() {
 
-			that.updateMessage('-----------');
-			that.updateMessage('Choose a state on your team to launch an attack!');
+			updateMessage('-----------');
+			updateMessage('Choose a state on your team to launch an attack!');
 
 			assignEvent('mouseover', highlightState);
 			assignEvent('mouseout', highlightStateOff);
@@ -828,8 +845,8 @@ $(document).ready(function() {
 
 				if ( !isOnTeam(event) ) {
 
-					that.updateMessage('-----------');
-					that.updateMessage('Not on your team!');
+					updateMessage('-----------');
+					updateMessage('Not on your team!');
 				
 				} else {
 
@@ -849,14 +866,13 @@ $(document).ready(function() {
 					}
 			}
 
-			assignEvent('click', tempFunc);
-		
+			assignEvent('click', tempFunc);	
 		};
 
 		var chooseTargetState = function() {
 
-			that.updateMessage('-----------');
-			that.updateMessage('Choose a state in range to attack!');
+			updateMessage('-----------');
+			updateMessage('Choose a state in range to attack!');
 
 			
 			highlightAllOff();
@@ -876,65 +892,119 @@ $(document).ready(function() {
 
 					console.log('valid target');
 				
+					userAttack(event);
+
 				} else {
+
+					updateMessage('-----------');
+					updateMessage('Not a valid target!');
 
 					}
 			}
 
 			assignEvent('click', tempFunc);
+		}
+
+		var userAttack = function(event) {
+
+			zoomToState(event);
+
+			highlightAllOff();
+
+			highlightPair(event.target, statePath[currentState.index]);
+
+			clearMessages();
+
+			updateMessage(currentState.displayName + ' attacks ' + stateData[event.target.getAttribute('value')].displayName + '!');
+
+			battle(stateData[event.target.getAttribute('value')], currentState);
 
 		}
 
-		this.gameLoop = function() {
+		var computerAttack = function() {
+
+		};
+
+		var battle = function(targetState, playerState) {
+
+			var randomPercent1 = Math.random();
+
+			var randomPercent2 = Math.random();
+
+
+			var winOrLose = Math.floor(Math.random() * 2);
+
+
+			if(winOrLose === 1) {
+
+				targetState.votes -= Math.round(randomPercent1 * targetState.votes);
 		
-			//choosePlayerState();
-			
-			// assignEvent('mouseover', highlightState);
+				updateMessage(targetState.displayName + ' suffered a ' + (Math.round(randomPercent1*100)) + '% loss!'); 
 
-			// assignEvent('mouseout', highlightStateOff);
+					if(targetState.votes < 1 && playerState.votes > 1) {
 
-			// assignEvent('onmouseup', showStateInfo);
+						updateMessage(playerState.displayName + ' defeates ' + targetState.displayName + '!');
 
+						targetState.team = playerState.team;
 
-			// that.updateMessage('-----------');
-	
-			// that.updateMessage('Choose a state on your team to begin campaign!');
+						showPlayerStateStatus(playerState);
+						
+						assignPattern();
 
-			// removeEvent('click', showStateInfo);
+						zoomOut();
 
-			// choosePlayerState();
+					}
 
-			// console.log(currentState);
+				playerState.votes += Math.round(randomPercent2 * playerState.votes);
 
-			//assignEvent('click', choosePlayerState);
+				updateMessage(playerState.displayName + ' gained ' + (Math.round(randomPercent2*100)) + '% more votes!'); 
 
+				showPlayerStateStatus(playerState);
 
-			// that.updateMessage('-----------');
-	
-			// that.updateMessage('Choose a neighbor to attack!');
-
-			// highlightNeighbors(currentState.neighbors);
+			}
 
 
-			// removeEvent('click', showStateInfo);
+			if(winOrLose === 0) {
 
-			// assignEvent('click', chooseNeighborAttack);
+				playerState.votes -= Math.round(randomPercent2 * playerState.votes);
+		
+				updateMessage(playerState.displayName + ' suffered a ' + (Math.round(randomPercent2*100)) + '% loss!'); 
 
-			// for(var i = 0; i < statePath.length; i++  ) {
-			
-			// 	statePath[i].removeEventListener('click', showStateInfo);
 
-			// };
+					if(playerState.votes < 1 && targetState.votes > 1) {
 
-			// for(var i = 0; i < statePath.length; i++  ) {
-			
-			// 	statePath[i].addEventListener('click', chooseState);
+						updateMessage(targetState.displayName + ' defeates ' + playerState.displayName + '!');
+						playerState.team = targetState.team;
 
-			// };
+						showPlayerStateStatus(playerState);
 
-			//console.log(areNeighbors(stateData[0], stateData[1]));
+						assignPattern();
 
-		}
+						zoomOut();
+
+					}
+
+
+				targetState.votes += Math.round(randomPercent1 * targetState.votes);
+
+				updateMessage(targetState.displayName + ' gained ' + (Math.round(randomPercent1*100)) + '% more votes!'); 
+
+				showPlayerStateStatus(playerState);
+
+			}
+
+			console.log(targetState.votes, playerState.votes);
+
+
+
+
+		};
+
+		var gameOver = function() {
+		
+		};
+
+
 
 
 		setupBoard(chooseTeam);
