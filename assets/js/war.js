@@ -6,14 +6,6 @@ $(document).ready(function() {
 	$(window).on('load', function () {	
 	
 
-	var Player = function() {
-	};
-
-
-	var computerUser = function() {
-	};
-
-
 	var war = function() {
 
 		var board = document.getElementById('usMap');
@@ -41,7 +33,7 @@ $(document).ready(function() {
 						id: 'AR',
 						index: 1,
 						votes: 6,
-						team: 'south',
+						team: 'midwest',
 						neighbors: ['LA', 'MS', 'TX', 'OK', 'TN', 'MO'],
 						effectivness: 1
 					},
@@ -577,10 +569,22 @@ $(document).ready(function() {
 
 			var state = event.target;
 
-			state.style.strokeWidth = '4px';
+			state.style.strokeWidth = '5px';
 			state.style.stroke = '#33ff33';
 		};
  
+ 		var highlightStateIfOnTeam = function(event) {
+
+ 			var state = event.target;
+
+ 			if(state.getAttribute('class') === team) {
+
+				state.style.strokeWidth = '5px';
+				state.style.stroke = '#33ff33';
+
+ 			}
+
+ 		}
 
 		var highlightStateOff = function(event) {
 
@@ -600,7 +604,7 @@ $(document).ready(function() {
 			for( var i = 0; i < stateData.length; i++ ) {
 
 				if ( stateData[i].team === tempTeam ) {
-					statePath[i].style.strokeWidth = '4px';
+					statePath[i].style.strokeWidth = '5px';
 					statePath[i].style.stroke = '#33ff33';
 				}
 			}
@@ -624,7 +628,7 @@ $(document).ready(function() {
 
 				if (currentState.neighbors.includes ( (statePath[i].getAttribute('id') ) ) && stateData[i].team !== currentState.team) {
 					
-					statePath[i].style.strokeWidth = '4px';
+					statePath[i].style.strokeWidth = '5px';
 					//statePath[i].style.strokeDasharray = '1 3 1 3';
 					statePath[i].style.stroke = '#33ff33';
 
@@ -634,10 +638,10 @@ $(document).ready(function() {
 
 		var highlightPair = function(state1, state2) {
 
-			state1.style.strokeWidth = '4px';
+			state1.style.strokeWidth = '5px';
 			state1.style.stroke = '#33ff33';
 
-			state2.style.strokeWidth = '4px';
+			state2.style.strokeWidth = '5px';
 			state2.style.stroke = '#33ff33';
 
 		}
@@ -706,8 +710,10 @@ $(document).ready(function() {
 
 		};
 
-		var showPlayerTeamStatus = function(callback) {
+		var showPlayerTeamStatus = function() {
 			
+			$('#userStatusUl').empty();
+
 			for(var i = 0; i < stateData.length; i++) {
 
 				if(stateData[i].team === team && stateData[i].votes > 0 && $('#' + stateData[i].id + '-ListItem').length != true) {
@@ -741,11 +747,39 @@ $(document).ready(function() {
 			userUl.append( $('<li>'). html('-------------------'));
 
 			userUl.append( $('<li>').html('Votes remaining: ' + state.votes) );
-
-			userUl.append( $('<li>').html('Effectiveness: ' + state.effectivness) );
 		
 			userUl.append( $('<li>'). html('-------------------'));
 		}
+
+		var showBattleStatus = function(targetState, playerState) {
+
+			var userUl = $('#userStatusUl');
+
+			userUl.empty();
+			
+			userUl.append( $('<li>').addClass('highlight bigger').html(playerState.displayName));
+
+			userUl.append( $('<li>'). html('-------------------'));
+
+			userUl.append( $('<li>').html('Votes remaining: ' + playerState.votes) );
+		
+			userUl.append( $('<li>'). html('-------------------'));
+
+
+			userUl.append( $('<li>').addClass('vs').html('vs.') );
+
+
+			userUl.append( $('<li>').addClass('highlight bigger').html(targetState.displayName));
+
+			userUl.append( $('<li>'). html('-------------------'));
+
+			userUl.append( $('<li>').html('Votes remaining: ' + targetState.votes) );
+		
+			userUl.append( $('<li>'). html('-------------------'));
+
+		}
+
+
 
 		var updateMessage = function(message) {
 
@@ -794,8 +828,17 @@ $(document).ready(function() {
 
 		var chooseTeam = function() {
 
-			updateMessage('Choose your team');
+			//updateMessage('Choose your team');
 
+			$('#userStatusUl').empty();
+
+			var listItem = $('<li>');
+			
+			listItem.addClass('highlight').html('Choose your region');
+
+			$('#userStatusUl').append(listItem);
+
+				
 			if( team === null ) {
 
 				assignEvent('mouseover', highlightTeam);
@@ -836,7 +879,7 @@ $(document).ready(function() {
 			updateMessage('-----------');
 			updateMessage('Choose a state on your team to launch an attack!');
 
-			assignEvent('mouseover', highlightState);
+			assignEvent('mouseover', highlightStateIfOnTeam);
 			assignEvent('mouseout', highlightStateOff);
 
 			var tempFunc = function(event) {
@@ -854,7 +897,7 @@ $(document).ready(function() {
 
 					showPlayerStateStatus(state);
 
-					removeEvent('mouseover', highlightState);
+					removeEvent('mouseover', highlightStateIfOnTeam);
 					removeEvent('mouseout', highlightStateOff);	
 				
 					highlightAllOff();
@@ -879,9 +922,9 @@ $(document).ready(function() {
 
 			highlightNeighbors();
 
-			assignEvent('mouseover', highlightStateFill);
+			// assignEvent('mouseover', highlightState);
 			
-			assignEvent('mouseout', highlightStateFillOff);
+			// assignEvent('mouseout', highlightStateOff);
 
 			
 			var tempFunc = function(event) {
@@ -892,6 +935,12 @@ $(document).ready(function() {
 
 					console.log('valid target');
 				
+					// removeEvent('mouseover', highlightState);
+			
+					// removeEvent('mouseout', highlightStateOff);
+
+				//	assignPattern();
+
 					userAttack(event);
 
 				} else {
@@ -922,10 +971,13 @@ $(document).ready(function() {
 		}
 
 		var computerAttack = function() {
-
 		};
 
 		var battle = function(targetState, playerState) {
+
+
+			showBattleStatus(targetState, playerState);
+
 
 			var randomPercent1 = Math.random();
 
@@ -939,15 +991,17 @@ $(document).ready(function() {
 
 				targetState.votes -= Math.round(randomPercent1 * targetState.votes);
 		
+				updateMessage('---------------------');
+
 				updateMessage(targetState.displayName + ' suffered a ' + (Math.round(randomPercent1*100)) + '% loss!'); 
 
-					if(targetState.votes < 1 && playerState.votes > 1) {
+					if(targetState.votes === 0 && playerState.votes > 1) {
 
 						updateMessage(playerState.displayName + ' defeates ' + targetState.displayName + '!');
 
 						targetState.team = playerState.team;
 
-						showPlayerStateStatus(playerState);
+						showBattleStatus(targetState, playerState);
 						
 						assignPattern();
 
@@ -959,24 +1013,26 @@ $(document).ready(function() {
 
 				updateMessage(playerState.displayName + ' gained ' + (Math.round(randomPercent2*100)) + '% more votes!'); 
 
-				showPlayerStateStatus(playerState);
+				showBattleStatus(targetState, playerState);
 
 			}
 
 
 			if(winOrLose === 0) {
 
+				updateMessage('---------------------');
+
 				playerState.votes -= Math.round(randomPercent2 * playerState.votes);
 		
 				updateMessage(playerState.displayName + ' suffered a ' + (Math.round(randomPercent2*100)) + '% loss!'); 
 
 
-					if(playerState.votes < 1 && targetState.votes > 1) {
+					if(playerState.votes === 0 && targetState.votes > 1) {
 
 						updateMessage(targetState.displayName + ' defeates ' + playerState.displayName + '!');
 						playerState.team = targetState.team;
 
-						showPlayerStateStatus(playerState);
+						showBattleStatus(targetState, playerState);
 
 						assignPattern();
 
@@ -984,19 +1040,15 @@ $(document).ready(function() {
 
 					}
 
-
 				targetState.votes += Math.round(randomPercent1 * targetState.votes);
 
 				updateMessage(targetState.displayName + ' gained ' + (Math.round(randomPercent1*100)) + '% more votes!'); 
 
-				showPlayerStateStatus(playerState);
+				showBattleStatus(targetState, playerState);
 
 			}
 
 			console.log(targetState.votes, playerState.votes);
-
-
-
 
 		};
 
@@ -1009,21 +1061,10 @@ $(document).ready(function() {
 
 		setupBoard(chooseTeam);
 
-
 	};
 	
  	
  	var game = new war();
-
- 	//game.setupBoard(chooseTeam);
-
-
-
- 	//newgame.setupBoard();
-
- 	//newgame.assignPattern();
-
- 	//newgame.chooseTeam();
 
 
 	});

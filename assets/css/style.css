@@ -15,15 +15,15 @@ h3 {
 }
 
 h4 {
-	margin: 3% 0 6% 0;
+	margin: 6% 0 6% 0;
 	position: relative;
-	font-size: 22px;
+	font-size: 17px;
 	color: green;
 	font-family: 'Press Start 2P';
 }
 
 ul {
-	margin-top: -1%;
+	margin-top: 1%;
 	list-style-type: none;
 }
 
@@ -31,7 +31,7 @@ li {
 
 	position: relative;
 	text-align: left;
-	font-size: 18px;
+	font-size: 14px;
 	font-family: 'Press Start 2P';
 	color: green;
 }
@@ -101,9 +101,9 @@ u {
 	left: 0;
 	bottom: 0;
 	height: 38%;
-	min-height: 390px;
+	min-height: 350px;
 	width: 96%;
-	margin: 0% 0% 1% 1%;
+	margin: 1% 0% 1% 1%;
 	border: green double 5px;
 	text-align: center;
 	display: inline-flex;
@@ -123,7 +123,7 @@ u {
 #terminalMessageUl {
 	font-size: 18px;
 	float: left;
-	margin-right: 7%
+	margin: 0 0 0 0;
 }
 
 .userStatusLi {
@@ -132,9 +132,15 @@ u {
 	color: green;
 }
 
-#terminalMessages {
-	width: 55%;
+.vs {
+	margin: 8% 0%;
+}
 
+#terminalMessages {
+	position: absolute;
+	top: -6px;
+	right: 0;
+	width: 55%;
 }
 
 .termMsg {
