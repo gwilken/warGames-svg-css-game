@@ -468,6 +468,7 @@ $(document).ready(function() {
 			callback(event.target);	
 		};
 
+
 		var areNeighbors = function(state1, state2) {
 
 			if(state1.neighbors.includes(state2.id)) {
@@ -477,6 +478,7 @@ $(document).ready(function() {
 			} else return false;
 		}
 
+
 		var getNeighbors = function(event) {
 
 			var index = event.target.getAttribute('value');
@@ -485,11 +487,23 @@ $(document).ready(function() {
 
 		}
 
+		var isNeighbor = function(event) {
+
+			//console.log('isneig: ', currentState);
+
+			var clickedStateId = event.target.getAttribute('id');
+
+			if(currentState.neighbors.includes(clickedStateId)) {
+
+				return true;
+			
+			} else return false;
+
+		}
+
 		var isOnTeam = function(event) {
 
 			var index = event.target.getAttribute('value');
-
-			console.log(stateData[index].team, team);
 
 			if( stateData[index].team === team ) { 
 
@@ -499,11 +513,35 @@ $(document).ready(function() {
 
 		}
 
+		var highlightStateFill = function(event) {
+
+			var state = event.target;
+
+			state.style.fill = '#33ff33';
+			state.style.fillOpacity = '.3';
+
+		}
+
+		var highlightStateFillOff = function(event) {
+
+			console.log('fill off');
+
+			var state = event.target;
+
+			var pattern = 'url(#' + stateData[state.getAttribute('value')].team + ')';
+
+			console.log(pattern);
+
+			state.style.fillOpacity = '1';
+			state.style.fill = pattern;
+
+		};
+
 		var highlightState = function(event) {
 
 			var state = event.target;
 
-			state.style.strokeWidth = '.5%';
+			state.style.strokeWidth = '4px';
 			state.style.stroke = '#33ff33';
 		};
  
@@ -526,7 +564,7 @@ $(document).ready(function() {
 			for( var i = 0; i < stateData.length; i++ ) {
 
 				if ( stateData[i].team === tempTeam ) {
-					statePath[i].style.strokeWidth = '3px';
+					statePath[i].style.strokeWidth = '4px';
 					statePath[i].style.stroke = '#33ff33';
 				}
 			}
@@ -545,14 +583,16 @@ $(document).ready(function() {
 
 
 
-		var highlightNeighbors = function(array) {
+		var highlightNeighbors = function() {
 
 			for(var i = 0; i < statePath.length; i ++) {
 
-				if (array.includes ( (statePath[i].getAttribute('id') ) ) ) {
+				if (currentState.neighbors.includes ( (statePath[i].getAttribute('id') ) ) && stateData[i].team !== currentState.team) {
 					
-					statePath[i].style.strokeWidth = '3px';
+					statePath[i].style.strokeWidth = '4px';
+					//statePath[i].style.strokeDasharray = '1 3 1 3';
 					statePath[i].style.stroke = '#33ff33';
+
 				}
 			}
 		}
@@ -643,11 +683,9 @@ $(document).ready(function() {
 
 			console.log(isOnTeam(event));
 
-		//	highlightNeighbors( getNeighbors(event) );
-
 		};
 
-		var updateStatus = function(callback) {
+		var showPlayerTeamStatus = function(callback) {
 			
 			for(var i = 0; i < stateData.length; i++) {
 
@@ -668,12 +706,28 @@ $(document).ready(function() {
 					$('#userStatusUl').append(listItem);
 
 				}
-
 			}
-
-			//callback();
-
 		};
+
+		var showPlayerStateStatus = function(state) {
+
+			var userUl = $('#userStatusUl');
+			
+			userUl.empty();
+
+			userUl.append( $('<li>').addClass('highlight bigger').html(state.displayName));
+
+			userUl.append( $('<li>'). html('-------------------'));
+
+			userUl.append( $('<li>').html('Votes remaining: ' + state.votes) );
+
+			userUl.append( $('<li>').html('Effectiveness: ' + state.effectivness) );
+		
+			userUl.append( $('<li>'). html('-------------------'));
+			
+	//		userUl.append( $('<li>').html('Neighbors: ' + state.neighbors) );
+
+		}
 
 		this.updateMessage = function(message) {
 
@@ -685,7 +739,7 @@ $(document).ready(function() {
 
 			listItem.text(message);
 
-			if( $('.termMsg').length > 10) {
+			if( $('.termMsg').length > 9) {
 
 				$('.termMsg').last().remove();
 
@@ -696,19 +750,25 @@ $(document).ready(function() {
 
 
 
-		var setupBoard = function() {
+		var setupBoard = function(callback) {
 	
 			that.updateMessage('Setting up board');
-	
-			assignPattern();
-
-			$('#zoomOut').on('click', zoomOut);
-
-			assignEvent('dblclick', zoomToState);
-
-			boardReady = true;
 			
-			that.updateMessage('Board ready');
+			if(!boardReady) {
+			
+				assignPattern();
+
+				$('#zoomOut').on('click', zoomOut);
+
+				assignEvent('dblclick', zoomToState);
+
+				boardReady = true;
+				
+				that.updateMessage('Board ready');
+
+				callback();
+			
+			 } 
 
 		};
 
@@ -717,54 +777,50 @@ $(document).ready(function() {
 
 			that.updateMessage('Choose your team');
 
-			assignEvent('mouseover', highlightTeam);
-			assignEvent('mouseout', highlightAllOff);
-			
+			if( team === null ) {
 
+				assignEvent('mouseover', highlightTeam);
+				assignEvent('mouseout', highlightAllOff);
+				
 
-			var tempFunc = function(event) {
+				var tempFunc = function(event) {
 
-				team = event.target.getAttribute('class');
+					team = event.target.getAttribute('class');
 
-				console.log('inside handle', team);
+					console.log('inside choose team', team);
 
-				that.updateMessage('Team ' + team + ' chosen');
+					that.updateMessage('Team ' + team + ' chosen');
 
-				var teamHeadline = $('<u>').html('TEAM ' + team.toUpperCase());
+					var teamHeadline = $('<u>').html('TEAM ' + team.toUpperCase());
 
-				$('#teamHeader').html(teamHeadline);
+					$('#teamHeader').html(teamHeadline);
 
-				highlightAllOff();
+					highlightAllOff();
 
-				removeEvent('mouseover', highlightTeam);
-				removeEvent('mouseout', highlightAllOff);
+					removeEvent('mouseover', highlightTeam);
+					removeEvent('mouseout', highlightAllOff);
 
-				removeEvent('click', tempFunc);
+					removeEvent('click', tempFunc);
 
-				updateStatus();
-			
-				that.gameLoop();
+					showPlayerTeamStatus();
 
-			}
+					choosePlayerState();
+				};
 
-			assignEvent('click', tempFunc);
+				assignEvent('click', tempFunc);
+
+			};
 
 		};
 
-		//	that.updateStatus(that.gameLoop);
 
-			// for(var i = 0; i < statePath.length; i++  ) {
-			
-			// 	statePath[i].addEventListener('onmouseup', clickChoseTeam); 
-			
-			// };
-	
+		var choosePlayerState = function() {
 
-		var chooseState = function() {
+			that.updateMessage('-----------');
+			that.updateMessage('Choose a state on your team to launch an attack!');
 
-			//var state = stateData[ event.target.getAttribute('value') ];
-
-			//console.log(event);
+			assignEvent('mouseover', highlightState);
+			assignEvent('mouseout', highlightStateOff);
 
 			var tempFunc = function(event) {
 
@@ -774,19 +830,21 @@ $(document).ready(function() {
 
 					that.updateMessage('-----------');
 					that.updateMessage('Not on your team!');
-
-					chooseState();
 				
 				} else {
 
 					currentState = state;
 
-					that.updateMessage('-----------');
-					that.updateMessage('VOTES LEFT: ' + state.votes);
-					that.updateMessage('-----------');
-					that.updateMessage(state.displayName + ' selected');
+					showPlayerStateStatus(state);
+
+					removeEvent('mouseover', highlightState);
+					removeEvent('mouseout', highlightStateOff);	
+				
+					highlightAllOff();
 
 					removeEvent('click', tempFunc);
+
+					chooseTargetState();
 
 					}
 			}
@@ -795,25 +853,42 @@ $(document).ready(function() {
 		
 		};
 
+		var chooseTargetState = function() {
 
-		this.gameLoop = function() {
+			that.updateMessage('-----------');
+			that.updateMessage('Choose a state in range to attack!');
 
-			if(!gameActive) {
-				that.updateMessage('Game loop begin');
-				gameActive = true;
+			
+			highlightAllOff();
+
+			highlightNeighbors();
+
+			assignEvent('mouseover', highlightStateFill);
+			
+			assignEvent('mouseout', highlightStateFillOff);
+
+			
+			var tempFunc = function(event) {
+
+				var state = stateData[ event.target.getAttribute('value') ];
+
+				if ( !isOnTeam(event) && isNeighbor(event) ) {
+
+					console.log('valid target');
+				
+				} else {
+
+					}
 			}
 
-			if (!boardReady) {
-				setupBoard();			
-			};
+			assignEvent('click', tempFunc);
+
+		}
+
+		this.gameLoop = function() {
+		
+			//choosePlayerState();
 			
-			if (!team) {
-				chooseTeam();
-			};
-
-
-
-
 			// assignEvent('mouseover', highlightState);
 
 			// assignEvent('mouseout', highlightStateOff);
@@ -827,11 +902,11 @@ $(document).ready(function() {
 
 			// removeEvent('click', showStateInfo);
 
-			// chooseState();
+			// choosePlayerState();
 
 			// console.log(currentState);
 
-			//assignEvent('click', chooseState);
+			//assignEvent('click', choosePlayerState);
 
 
 			// that.updateMessage('-----------');
@@ -845,9 +920,6 @@ $(document).ready(function() {
 
 			// assignEvent('click', chooseNeighborAttack);
 
-
-
-
 			// for(var i = 0; i < statePath.length; i++  ) {
 			
 			// 	statePath[i].removeEventListener('click', showStateInfo);
@@ -860,19 +932,22 @@ $(document).ready(function() {
 
 			// };
 
-
-
 			//console.log(areNeighbors(stateData[0], stateData[1]));
 
-
 		}
+
+
+		setupBoard(chooseTeam);
+
 
 	};
 	
  	
  	var game = new war();
 
- 	game.gameLoop();
+ 	//game.setupBoard(chooseTeam);
+
+
 
  	//newgame.setupBoard();
 

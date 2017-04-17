@@ -15,6 +15,7 @@ h3 {
 }
 
 h4 {
+	margin: 3% 0 6% 0;
 	position: relative;
 	font-size: 22px;
 	color: green;
@@ -30,7 +31,7 @@ li {
 
 	position: relative;
 	text-align: left;
-	font-size: 20px;
+	font-size: 18px;
 	font-family: 'Press Start 2P';
 	color: green;
 }
@@ -38,6 +39,15 @@ li {
 #terminalMessageUl li:first-child {
     background: green;
     color: black;
+}
+
+.highlight {
+	background: green;
+    color: black;
+}
+
+.bigger {
+	font-size: 22px;
 }
 
 .invert {
@@ -91,7 +101,7 @@ u {
 	left: 0;
 	bottom: 0;
 	height: 38%;
-	min-height: 400px;
+	min-height: 390px;
 	width: 96%;
 	margin: 0% 0% 1% 1%;
 	border: green double 5px;
