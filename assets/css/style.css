@@ -91,8 +91,8 @@ u {
 	left: 0;
 	bottom: 0;
 	height: 38%;
-/*	min-height: 417px;
-*/	width: 96%;
+	min-height: 400px;
+	width: 96%;
 	margin: 0% 0% 1% 1%;
 	border: green double 5px;
 	text-align: center;
@@ -113,6 +113,7 @@ u {
 #terminalMessageUl {
 	font-size: 18px;
 	float: left;
+	margin-right: 7%
 }
 
 .userStatusLi {
