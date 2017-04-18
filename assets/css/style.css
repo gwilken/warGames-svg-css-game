@@ -10,10 +10,12 @@ h4 {
 	font-family: 'Press Start 2P';
 }
 
+
 ul {
 	margin-top: -1%;
 	list-style-type: none;
 }
+
 
 li {
 	position: relative;
@@ -23,11 +25,19 @@ li {
 	color: green;
 }
 
-#terminalMessageUl li:first-child {
-	font-size: 18px;
-    background: green;
-    color: black;
+
+p {
+	position: fixed;
+	font-size: 30px;
+	z-index: 10;
 }
+
+
+u {
+    text-decoration: none;
+    border-bottom: 5px solid green;
+}​
+
 
 .highlight {
 	background: green;
@@ -44,16 +54,7 @@ li {
     color: black;
 }
 
-p {
-	position: fixed;
-	font-size: 30px;
-	z-index: 10;
-}
 
-u {
-    text-decoration: none;
-    border-bottom: 5px solid green;
-  }​
 
 #mainContainer {
 	position: relative;
@@ -70,19 +71,8 @@ u {
 	width: 99%;
 	height: 100%;
 	text-align: center;
-/*	top: 0;
-	left: 0;*/
 }
 
-#zoomOut {
-	background-color: black;
-	border: solid 15px black;
-	position: fixed;
-	top: -1%;
-	left: 1%;
-	display: none;
-
-}
 
 #terminalContainer {
 	position: relative;
@@ -97,6 +87,25 @@ u {
 	display: inline-flex;
 }
 
+#terminalMessageUl li:first-child {
+	font-size: 18px;
+    background: green;
+    color: black;
+}
+
+#terminalMessageUl {
+	font-size: 18px;
+	float: left;
+	margin: 0 6% 0 0;
+}
+
+#terminalMessages {
+	position: absolute;
+	top: -6px;
+	right: 0;
+	width: 55%;
+}
+
 #userInfo {
 	width: 45%;
 	border-right: green solid 1px;
@@ -106,12 +115,6 @@ u {
 #userStatusUl {
 	font-size: 18px;
 	float: left;
-}
-
-#terminalMessageUl {
-	font-size: 18px;
-	float: left;
-	margin: 0 6% 0 0;
 }
 
 .userStatusLi {
@@ -124,21 +127,21 @@ u {
 	margin: 8% 0%;
 }
 
-#terminalMessages {
-	position: absolute;
-	top: -6px;
-	right: 0;
-	width: 55%;
-}
-
-.termMsg {
-
-}
 
 #score {
 	position: fixed;
 	top: 0;
 	left: 0;
+}
+
+#zoomOut {
+	background-color: black;
+	border: solid 15px black;
+	position: fixed;
+	top: -1%;
+	left: 1%;
+	display: none;
+
 }
 
 @keyframes blink {

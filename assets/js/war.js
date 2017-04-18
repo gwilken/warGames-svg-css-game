@@ -1,5 +1,18 @@
 
-//electoral war, greg wilken
+//electoral war, greg wilken, 4-17-2017
+
+// some notes on the code:
+// some of the key functionality is derived from the interaction with the .svg file.
+// the patterns for teams, all the state vector outline paths, and some classes to help keep me organized are there.
+// svg's can be traveresed like html, using get and set attribute, etc.
+//
+// the stateData object and statePath array are organized so they mirror each other,
+// stateData[i] will correlate with the correct vector path for the state found at statePath[i].
+// statePath is an array-like variable of paths fetched from the svg, data can be retrived via index number, 
+// but js array methods wont work on it, which accounts for some extra code later on.
+// also, jquery doesnt seem to like attaching listeners to svg elements. so event listeners for mouse events are done
+// in vanilla JS which works just fine.
+
 
 $(document).ready(function() {
 
@@ -967,6 +980,20 @@ $(document).ready(function() {
 
 		};
 
+		var coinToss = function() {
+
+			console.log('coin toss');
+
+			var rand = Math.floor( (Math.random() * 2));
+
+			if(rand === 1) {
+
+				return true;
+			
+			} else return false;}
+
+		var gameOver = function() {	};
+
 		var battle = function(targetState, playerState) {
 
 			var numberOfFlips = targetState.votes + playerState.votes; 
@@ -1066,27 +1093,8 @@ $(document).ready(function() {
 	};
 					
 
-		var coinToss = function() {
-
-				console.log('coin toss');
-
-				var rand = Math.floor( (Math.random() * 2));
-
-				if(rand === 1) {
-
-					return true;
-				
-				} else return false;
-
-		}
-
-
-		var gameOver = function() {		
-		};
-
-
-		setupBoard(chooseTeam);
-
+	setupBoard(chooseTeam);
+	
 	};
 	
  	
