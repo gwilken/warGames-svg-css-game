@@ -745,7 +745,7 @@ $(document).ready(function() {
 
 			userUl.append( $('<li>'). html('-------------------'));
 
-			userUl.append( $('<li>').html('Votes remaining: ' + playerState.votes) );
+			userUl.append( $('<li>').html('Votes won: ' + playerState.votes) );
 		
 			userUl.append( $('<li>'). html('-------------------'));
 
@@ -757,9 +757,29 @@ $(document).ready(function() {
 
 			userUl.append( $('<li>'). html('-------------------'));
 
-			userUl.append( $('<li>').html('Votes remaining: ' + targetState.votes) );
+			userUl.append( $('<li>').html('Votes won: ' + targetState.votes) );
 		
 			userUl.append( $('<li>'). html('-------------------'));
+		}
+
+		var showBattleWin = function(state) {
+
+			//setTimeout(function() {
+
+				var userUl = $('#userStatusUl');
+
+				userUl.empty();
+				
+				userUl.append( $('<li>').addClass('highlight bigger').html(state.displayName));
+
+				userUl.append( $('<li>'). html('-------------------'));
+
+				userUl.append( $('<li>').addClass('highlight bigger').html('WINS') );
+			
+				userUl.append( $('<li>'). html('-------------------'));
+
+			//}, 1000);
+
 		}
 
 		var updateMessage = function(message) {
@@ -857,6 +877,10 @@ $(document).ready(function() {
 
 		var choosePlayerState = function() {
 
+			console.log('choose player state');
+
+			showPlayerTeamStatus();
+
 			updateMessage('-----------');
 			updateMessage('Choose a state on your team to launch an attack!');
 
@@ -895,6 +919,8 @@ $(document).ready(function() {
 
 		var chooseStateInRange = function() {
 
+			console.log('state in range');
+
 			updateMessage('-----------');
 			updateMessage('Choose a state in range to attack!');
 
@@ -920,7 +946,7 @@ $(document).ready(function() {
 			
 					// removeEvent('mouseout', highlightStateOff);
 
-				//	assignPattern();
+					removeEvent('click', tempFunc);
 
 					userAttack(event);
 
@@ -936,6 +962,8 @@ $(document).ready(function() {
 		}
 
 		var userAttack = function(event) {
+
+			console.log('user attack');
 
 			zoomToState(event);
 
@@ -954,140 +982,238 @@ $(document).ready(function() {
 
 		var computerAttack = function() {
 
-
-
-
 			console.log('comp attack');
 
 		};
 
 		var battle = function(targetState, playerState) {
 
-			showBattleStatus(targetState, playerState);
+			var targetTempVotes = targetState.votes;
+			var playerTempVotes = playerState.votes;
 
+			targetState.votes = 0;
+			playerState.votes = 0;
 
-				console.log('battle loop');
+			var numberOfFlips = targetTempVotes + playerTempVotes; 
 
+			var timer = setInterval(function() {
 
-				setTimeout(function() {
+				coinToss() ? targetState.votes++ : playerState.votes++;  //i always wanted to use the ternary conditional operator in a function, here it is!
 
-		
-					var coinToss = Math.floor(Math.random() * 2);
+				showBattleStatus(targetState, playerState);
 
+				if(targetState.votes + playerState.votes === numberOfFlips) {
 
-					var voteLostChange = Math.round(Math.random() * targetState.votes);
-						
-					var voteGainedChange = Math.round(Math.random() * playerState.votes);
-
-
-
-					if(coinToss === 1) {
-
-						targetState.votes -= voteLostChange;
-
-						playerState.votes += voteGainedChange;
+					clearInterval(timer);
 				
-						updateMessage('---------------------');
+					winnerExit();	
 
-						updateMessage(targetState.displayName +  ' lost ' + voteLostChange + ' votes!'); 
+				};
 
-						updateMessage(playerState.displayName + ' gained ' + voteGainedChange + ' more votes!'); 
-
-
-							if(targetState.votes < 1) {
-
-								targetState.votes = 0;
-
-								targetState.team = playerState.team;
-
-								statePath[targetState.index].setAttribute('class', playerState.team);
-
-								showBattleStatus(targetState, playerState);
-								
-								assignPattern();
-
-								zoomOut();
-
-								updateMessage(playerState.displayName + ' wins!');
-
-								updateMessage('---------------------');
-
-								updateMessage('Team ' + playerState.team + ' takes ' + targetState.displayName + '!');
-
-								highlightAllOff();
-
-							//	computerAttack();
-
-								choosePlayerState();
-
-							};
+			}, 200);
 
 
-						if(targetState.votes > 0 && currentState.votes > 0) {
-
-							battle(targetState, currentState);
-
-						};
+			var winnerExit = function() {
 
 
-					} else {
+				if(targetState.votes < playerState.votes) {
 
-						updateMessage('---------------------');
+					targetState.team = playerState.team;
 
-						playerState.votes -= voteLostChange;
+					statePath[targetState.index].setAttribute('class', playerState.team);
 
-						targetState.votes += voteGainedChange;
+					// targetState.votes = targetTempVotes;
+					// playerState.votes = playerTempVotes;
 
-						updateMessage(targetState.displayName + ' gained ' + voteGainedChange + ' more votes!'); 
+					showBattleWin(playerState);
+					
+					assignPattern();
+
+					zoomOut();
+
+					updateMessage(playerState.displayName + ' wins!');
+
+					updateMessage('---------------------');
+
+					updateMessage('Team ' + playerState.team + ' takes ' + targetState.displayName + '!');
+
+					highlightAllOff();
+
+					choosePlayerState();
+				};
+
+
+				if(targetState.votes > playerState.votes) {
+
+					playerState.team = targetState.team;
+
+					statePath[playerState.index].setAttribute('class', targetState.team);
+
+					// targetState.votes = targetTempVotes;
+					// playerState.votes = playerTempVotes;
+
+					showBattleWin(targetState);
+
+					assignPattern();
+
+					zoomOut();
+
+					updateMessage(targetState.displayName + ' wins!');
+
+					updateMessage('---------------------');
+
+					updateMessage('Team ' + targetState.team + ' takes ' + playerState.displayName + '!');
+
+					highlightAllOff();
+
+					choosePlayerState();
+				};
+
+				if(targetState.votes === playerState.votes) {
+
+					// targetState.votes = targetTempVotes;
+					// playerState.votes = playerTempVotes;
+
+					updateMessage('---------------------');
+
+					updateMessage('Its a Draw! Choose again.');
+
+					zoomOut();
+
+					highlightAllOff();
+					
+					choosePlayerState();
+				}				
+
+			};
+
+	};
+					
+					
+
+			
+
+		//};
+
+			// 		console.log(voteChange);
+
+			// 		if(coinToss === 1) {
+
+			// 			targetState.votes -= voteChange;
+
+			// 			playerState.votes += voteChange;
 				
-						updateMessage(playerState.displayName +  ' lost ' + voteLostChange + ' votes!'); 
+			// 			updateMessage('---------------------');
+
+			// 			updateMessage(targetState.displayName +  ' lost ' + voteChange + ' votes!'); 
+
+			// 			updateMessage(playerState.displayName + ' gained ' + voteChange + ' more votes!'); 
 
 
-							if(playerState.votes < 1) {
+			// 				if(targetState.votes < 1) {
+
+			// 					targetState.votes = playerState.votes;
+
+			// 					targetState.team = playerState.team;
+
+			// 					statePath[targetState.index].setAttribute('class', playerState.team);
+
+			// 					showBattleWin(playerState);
 								
-								playerState.votes = 0;
+			// 					assignPattern();
 
-								playerState.team = targetState.team;
+			// 					zoomOut();
 
-								statePath[playerState.index].setAttribute('class', targetState.team);
+			// 					updateMessage(playerState.displayName + ' wins!');
 
-								showBattleStatus(targetState, playerState);
+			// 					updateMessage('---------------------');
 
-								assignPattern();
+			// 					updateMessage('Team ' + playerState.team + ' takes ' + targetState.displayName + '!');
 
-								zoomOut();
+			// 					highlightAllOff();
 
-								updateMessage(targetState.displayName + ' wins!');
+			// 					battleOver = true;
 
-								updateMessage('---------------------');
+			// 				};
 
-								updateMessage('Team ' + targetState.team + ' takes ' + playerState.displayName + '!');
+			// 			if(!battleOver) {
 
-								highlightAllOff();
+			// 				battle(targetState, currentState);
 
-							//	computerAttack();
+			// 			} choosePlayerState();;
 
-								choosePlayerState();
 
-							};
+			// 		} else {
+
+			// 			updateMessage('---------------------');
+
+			// 			playerState.votes -= voteChange;
+
+			// 			targetState.votes += voteChange;
+
+			// 			updateMessage(targetState.displayName + ' gained ' + voteChange + ' more votes!'); 
+				
+			// 			updateMessage(playerState.displayName +  ' lost ' + voteChange + ' votes!'); 
+
+
+			// 				if(playerState.votes < 1) {
+								
+			// 					playerState.votes = targetState.votes;
+
+			// 					playerState.team = targetState.team;
+
+			// 					statePath[playerState.index].setAttribute('class', targetState.team);
+
+			// 					showBattleWin(targetState);
+
+			// 					assignPattern();
+
+			// 					zoomOut();
+
+			// 					updateMessage(targetState.displayName + ' wins!');
+
+			// 					updateMessage('---------------------');
+
+			// 					updateMessage('Team ' + targetState.team + ' takes ' + playerState.displayName + '!');
+
+			// 					highlightAllOff();
+
+			// 					battleOver = true;
+
+			// 				};
 
  
-						if(targetState.votes > 0 && currentState.votes > 0) {
+			// 			if(!battleOver) {
 
-							battle(targetState, currentState);
+			// 				battle(targetState, currentState);
 
-						};
+			// 			} else choosePlayerState();;
 
 
-					};
+			// 		};
 
 				
-			}, 1000);
 
 
 
-			console.log(targetState.votes, playerState.votes);
-		};
+
+			// console.log(targetState.votes, playerState.votes);
+		//};
+
+		var coinToss = function() {
+
+				console.log('coin toss');
+
+				var rand = Math.floor( (Math.random() * 2));
+
+				if(rand === 1) {
+
+					return true;
+				
+				} else return false;
+
+		}
+
 
 		var gameOver = function() {		
 		};
