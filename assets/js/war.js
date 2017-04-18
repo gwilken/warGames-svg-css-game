@@ -885,7 +885,7 @@ $(document).ready(function() {
 
 					removeEvent('click', tempFunc);
 
-					chooseTargetState();
+					chooseStateInRange();
 
 					}
 			}
@@ -893,7 +893,7 @@ $(document).ready(function() {
 			assignEvent('click', tempFunc);	
 		};
 
-		var chooseTargetState = function() {
+		var chooseStateInRange = function() {
 
 			updateMessage('-----------');
 			updateMessage('Choose a state in range to attack!');
@@ -945,88 +945,146 @@ $(document).ready(function() {
 
 			clearMessages();
 
+			updateMessage('---------------------');
+
 			updateMessage(currentState.displayName + ' attacks ' + stateData[event.target.getAttribute('value')].displayName + '!');
 
 			battle(stateData[event.target.getAttribute('value')], currentState);
 		}
 
 		var computerAttack = function() {
+
+
+
+
+			console.log('comp attack');
+
 		};
 
 		var battle = function(targetState, playerState) {
 
-
 			showBattleStatus(targetState, playerState);
 
 
-			var randomPercent1 = Math.random();
-
-			var randomPercent2 = Math.random();
+				console.log('battle loop');
 
 
-			var winOrLose = Math.floor(Math.random() * 2);
+				setTimeout(function() {
 
-
-			if(winOrLose === 1) {
-
-				targetState.votes -= Math.round(randomPercent1 * targetState.votes);
 		
-				updateMessage('---------------------');
+					var coinToss = Math.floor(Math.random() * 2);
 
-				updateMessage(targetState.displayName + ' suffered a ' + (Math.round(randomPercent1*100)) + '% loss!'); 
 
-					if(targetState.votes === 0 && playerState.votes > 1) {
-
-						updateMessage(playerState.displayName + ' defeates ' + targetState.displayName + '!');
-
-						targetState.team = playerState.team;
-
-						showBattleStatus(targetState, playerState);
+					var voteLostChange = Math.round(Math.random() * targetState.votes);
 						
-						assignPattern();
-
-						zoomOut();
-
-					}
-
-				playerState.votes += Math.round(randomPercent2 * playerState.votes);
-
-				updateMessage(playerState.displayName + ' gained ' + (Math.round(randomPercent2*100)) + '% more votes!'); 
-
-				showBattleStatus(targetState, playerState);
-
-			}
+					var voteGainedChange = Math.round(Math.random() * playerState.votes);
 
 
-			if(winOrLose === 0) {
 
-				updateMessage('---------------------');
+					if(coinToss === 1) {
 
-				playerState.votes -= Math.round(randomPercent2 * playerState.votes);
-		
-				updateMessage(playerState.displayName + ' suffered a ' + (Math.round(randomPercent2*100)) + '% loss!'); 
+						targetState.votes -= voteLostChange;
+
+						playerState.votes += voteGainedChange;
+				
+						updateMessage('---------------------');
+
+						updateMessage(targetState.displayName +  ' lost ' + voteLostChange + ' votes!'); 
+
+						updateMessage(playerState.displayName + ' gained ' + voteGainedChange + ' more votes!'); 
 
 
-					if(playerState.votes === 0 && targetState.votes > 1) {
+							if(targetState.votes < 1) {
 
-						updateMessage(targetState.displayName + ' defeates ' + playerState.displayName + '!');
-						playerState.team = targetState.team;
+								targetState.votes = 0;
 
-						showBattleStatus(targetState, playerState);
+								targetState.team = playerState.team;
 
-						assignPattern();
+								statePath[targetState.index].setAttribute('class', playerState.team);
 
-						zoomOut();
+								showBattleStatus(targetState, playerState);
+								
+								assignPattern();
 
-					}
+								zoomOut();
 
-				targetState.votes += Math.round(randomPercent1 * targetState.votes);
+								updateMessage(playerState.displayName + ' wins!');
 
-				updateMessage(targetState.displayName + ' gained ' + (Math.round(randomPercent1*100)) + '% more votes!'); 
+								updateMessage('---------------------');
 
-				showBattleStatus(targetState, playerState);
+								updateMessage('Team ' + playerState.team + ' takes ' + targetState.displayName + '!');
 
-			}
+								highlightAllOff();
+
+							//	computerAttack();
+
+								choosePlayerState();
+
+							};
+
+
+						if(targetState.votes > 0 && currentState.votes > 0) {
+
+							battle(targetState, currentState);
+
+						};
+
+
+					} else {
+
+						updateMessage('---------------------');
+
+						playerState.votes -= voteLostChange;
+
+						targetState.votes += voteGainedChange;
+
+						updateMessage(targetState.displayName + ' gained ' + voteGainedChange + ' more votes!'); 
+				
+						updateMessage(playerState.displayName +  ' lost ' + voteLostChange + ' votes!'); 
+
+
+							if(playerState.votes < 1) {
+								
+								playerState.votes = 0;
+
+								playerState.team = targetState.team;
+
+								statePath[playerState.index].setAttribute('class', targetState.team);
+
+								showBattleStatus(targetState, playerState);
+
+								assignPattern();
+
+								zoomOut();
+
+								updateMessage(targetState.displayName + ' wins!');
+
+								updateMessage('---------------------');
+
+								updateMessage('Team ' + targetState.team + ' takes ' + playerState.displayName + '!');
+
+								highlightAllOff();
+
+							//	computerAttack();
+
+								choosePlayerState();
+
+							};
+
+ 
+						if(targetState.votes > 0 && currentState.votes > 0) {
+
+							battle(targetState, currentState);
+
+						};
+
+
+					};
+
+				
+			}, 1000);
+
+
 
 			console.log(targetState.votes, playerState.votes);
 		};

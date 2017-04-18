@@ -24,6 +24,7 @@ li {
 }
 
 #terminalMessageUl li:first-child {
+	font-size: 18px;
     background: green;
     color: black;
 }
