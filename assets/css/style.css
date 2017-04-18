@@ -11,14 +11,14 @@ h4 {
 }
 
 ul {
-	margin-top: 1%;
+	margin-top: -1%;
 	list-style-type: none;
 }
 
 li {
 	position: relative;
 	text-align: left;
-	font-size: 14px;
+	font-size: 15px;
 	font-family: 'Press Start 2P';
 	color: green;
 }
