@@ -8,3 +8,16 @@ Who said CSS can't be fun? Or fast.
 
 
 ## Starting map
+Would you like to play a game?
+
+![start map](https://github.com/gwilken/warGames-svg-css-game/blob/master/readme-images/wg-01.jpeg)
+
+## Attack your neighbors!
+We've all wanted too.
+
+![attack map](https://github.com/gwilken/warGames-svg-css-game/blob/master/readme-images/wg-02.jpeg)
+
+## Get in close
+SVG means we just scale up to zoom in, simple.
+
+![attack map](https://github.com/gwilken/warGames-svg-css-game/blob/master/readme-images/wg-03.jpeg)
