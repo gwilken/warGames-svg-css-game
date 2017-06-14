@@ -2,6 +2,8 @@
 
 This homage to the classic 1983 movie "warGames" uses only one SVG file and CSS to create a game with an 80's terminal like user interface.
 
+The US is divided into 4 regions that can do electoral battle with each other. States points are based on their electoral college vote number.
+
 Who said CSS can't be fun? Or fast.
 
 <a href="https://gwilken.github.io/ElectoralWarGames/">https://gwilken.github.io/warGames-svg-css-game/</a>
