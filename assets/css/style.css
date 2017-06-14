@@ -55,14 +55,14 @@ u {
 }
 
 
-
 #mainContainer {
 	position: relative;
+	margin: 0 5%;
 }
 
 #boardContainer {
 	width: 100%;
-	margin: 2% 2% 1% 0%; 
+	margin: 2% 2% 1% 0%;
 	height: auto;
 }
 
@@ -145,7 +145,7 @@ u {
 }
 
 @keyframes blink {
-  
+
   from {color: black;}
   to {color: green;}
 
@@ -157,7 +157,3 @@ u {
   	color: green;
 	animation: .7s blink reverse infinite;
 }
-
-
-
-

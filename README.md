@@ -1,5 +1,10 @@
-# ElectoralWarGames
+# warGames - A simple game built with SVG and CSS
 
-The beginnings of a simple game that demonstrates using only one .SVG file, javascript and css to enable fast dynamic user interaction.
+This homage to the classic 1983 movie "warGames" uses only one SVG file and CSS to create an 80's terminal like user interface (but thankfully, with a mouse).
 
-<a href="https://gwilken.github.io/ElectoralWarGames/">https://gwilken.github.io/ElectoralWarGames/</a>
+Who said CSS can't be fun? Or fast.
+
+<a href="https://gwilken.github.io/ElectoralWarGames/">https://gwilken.github.io/warGames-svg-css-game/</a>
+
+
+## Starting map
